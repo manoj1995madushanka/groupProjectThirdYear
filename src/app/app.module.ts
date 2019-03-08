@@ -17,6 +17,7 @@ import { GiveServiceComponent } from './give-service/give-service.component';
 import { ForumComponent } from './forum/forum.component';
 import { ContactUsComponent } from './interface/contact-us/contact-us.component';
 import { PrivacyPolicyComponent } from './interface/privacy-policy/privacy-policy.component';
+import {FindServiceComponent} from './findService/findService.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PrivacyPolicyComponent } from './interface/privacy-policy/privacy-polic
     GiveServiceComponent,
     ForumComponent,
     ContactUsComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    FindServiceComponent
   ],
   imports: [
     BrowserModule
