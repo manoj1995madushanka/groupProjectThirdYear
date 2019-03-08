@@ -18,6 +18,7 @@ import { ForumComponent } from './forum/forum.component';
 import { ContactUsComponent } from './interface/contact-us/contact-us.component';
 import { PrivacyPolicyComponent } from './interface/privacy-policy/privacy-policy.component';
 import {FindServiceComponent} from './findService/findService.component';
+import {AppRoutingModule} from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {FindServiceComponent} from './findService/findService.component';
     FindServiceComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
