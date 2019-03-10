@@ -1,3 +1,50 @@
-<p>
-  give-service works!
-</p>
+<div class="container">
+        <div class="cont1">
+                <div class="detailbar">
+                        <img class="detailbar-image" src="{{img_url}}" alt="not found">
+                        <h2>{{Name}}</h2>
+                        <p>"{{description}}"</p>
+
+                        <button mat-raised-button color="primary">Send request</button><br>
+                        <button mat-raised-button color="accent" (click)="changestate()">{{state}}</button>
+
+                        <div class="icons">
+
+                                <li><a href="#">
+                                                <mat-icon matBadge="{{requests}}">face</mat-icon>Requests
+                                        </a></li>
+                                <li><a href="#">
+                                                <mat-icon matBadge="{{notification}}">notification_important</mat-icon>
+                                                Notification
+                                        </a></li>
+                                <li><a href="#">
+                                                <mat-icon matBadge="{{email}}">email</mat-icon> Email
+                                        </a></li>
+                                <li><a href="#">
+                                                <mat-icon matBadge="{{email}}">chat</mat-icon> Chat
+                                        </a></li>
+
+                        </div>
+                </div>
+        </div>
+
+        <div class="cont2">
+                <div fxlex fxLayout="row" class="coverphoto">
+                        <img src="assets/img/pic2_ed.jpg" alt="not founded">
+                </div>
+
+                <mat-tab-group mat-align-tabs="end" animationDuration=0ms>
+                        <mat-tab label="personal details">
+                                <app-personal-details></app-personal-details>
+                        </mat-tab>
+                        <mat-tab label="Experiences">
+                                <app-experiences></app-experiences>
+                        </mat-tab>
+                        <mat-tab label="Feed backs">
+                                <app-feedbacks></app-feedbacks>
+                        </mat-tab>
+                </mat-tab-group>
+
+        </div>
+
+</div>

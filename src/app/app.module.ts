@@ -11,13 +11,20 @@ import { NavbarComponent } from './interface/navbar/navbar.component';
 import { HeaderComponent } from './interface/header/header.component';
 import { HomeComponent } from './interface/home/home.component';
 import { NotFoundComponent } from './interface/not-found/not-found.component';
-import { FindServiceComponent } from './find-service/find-service.component';
 import { ChildComponent } from './findService/child/child.component';
 import { HouseKeeperComponent } from './findService/house-keeper/house-keeper.component';
 import { GiveServiceComponent } from './give-service/give-service.component';
 import { ForumComponent } from './forum/forum.component';
 import { ContactUsComponent } from './interface/contact-us/contact-us.component';
 import { PrivacyPolicyComponent } from './interface/privacy-policy/privacy-policy.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MaterialModule } from './material/material.module';
+import { PersonalDetailsComponent } from './give-service/personal-details/personal-details.component';
+import { ExperiencesComponent } from './give-service/experiences/experiences.component';
+import { FeedbacksComponent } from './give-service/feedbacks/feedbacks.component';
+
 
 @NgModule({
   declarations: [
@@ -31,16 +38,22 @@ import { PrivacyPolicyComponent } from './interface/privacy-policy/privacy-polic
     HeaderComponent,
     HomeComponent,
     NotFoundComponent,
-    FindServiceComponent,
     ChildComponent,
     HouseKeeperComponent,
     GiveServiceComponent,
     ForumComponent,
     ContactUsComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    PersonalDetailsComponent,
+    ExperiencesComponent,
+    FeedbacksComponent
+    
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatGridListModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
