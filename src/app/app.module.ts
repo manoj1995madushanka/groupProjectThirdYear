@@ -19,7 +19,9 @@ import { ContactUsComponent } from './interface/contact-us/contact-us.component'
 import { PrivacyPolicyComponent } from './interface/privacy-policy/privacy-policy.component';
 import {FindServiceComponent} from './findService/findService.component';
 import {AppRoutingModule} from './app-routing.module';
-import {ChatModule} from "./bot/chat.module";
+import {ChatModule} from './bot/chat.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MaterialModule} from "./material.module";
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import {ChatModule} from "./bot/chat.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ChatModule
+    ChatModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
