@@ -22,6 +22,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {ChatModule} from './bot/chat.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material.module";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {MaterialModule} from "./material.module";
     AppRoutingModule,
     ChatModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
