@@ -28,8 +28,8 @@ import { FeedbacksComponent } from './give-service/feedbacks/feedbacks.component
 import {FindServiceComponent} from './findService/findService.component';
 import {AppRoutingModule} from './app-routing.module';
 import {ChatModule} from './bot/chat.module';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -63,8 +63,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    MaterialModule
-
+    MaterialModule,
+    FormsModule
   ],
 
   providers: [],
