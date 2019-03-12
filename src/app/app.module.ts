@@ -17,13 +17,21 @@ import { GiveServiceComponent } from './give-service/give-service.component';
 import { ForumComponent } from './forum/forum.component';
 import { ContactUsComponent } from './interface/contact-us/contact-us.component';
 import { PrivacyPolicyComponent } from './interface/privacy-policy/privacy-policy.component';
+
 import {MatGridListModule} from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MaterialModule } from './material/material.module';
+import { MaterialModule } from './material.module';
 import { PersonalDetailsComponent } from './give-service/personal-details/personal-details.component';
 import { ExperiencesComponent } from './give-service/experiences/experiences.component';
 import { FeedbacksComponent } from './give-service/feedbacks/feedbacks.component';
+
+
+import {FindServiceComponent} from './findService/findService.component';
+import {AppRoutingModule} from './app-routing.module';
+import {ChatModule} from './bot/chat.module';
+
+
 
 
 @NgModule({
@@ -46,15 +54,19 @@ import { FeedbacksComponent } from './give-service/feedbacks/feedbacks.component
     PrivacyPolicyComponent,
     PersonalDetailsComponent,
     ExperiencesComponent,
-    FeedbacksComponent
+    FeedbacksComponent,
+    FindServiceComponent
     
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatGridListModule,
+    AppRoutingModule,
+    ChatModule,
     MaterialModule
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
