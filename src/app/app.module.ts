@@ -25,14 +25,11 @@ import { MaterialModule } from './material.module';
 import { PersonalDetailsComponent } from './give-service/personal-details/personal-details.component';
 import { ExperiencesComponent } from './give-service/experiences/experiences.component';
 import { FeedbacksComponent } from './give-service/feedbacks/feedbacks.component';
-
-
 import {FindServiceComponent} from './findService/findService.component';
 import {AppRoutingModule} from './app-routing.module';
 import {ChatModule} from './bot/chat.module';
-
-
-
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -56,7 +53,6 @@ import {ChatModule} from './bot/chat.module';
     ExperiencesComponent,
     FeedbacksComponent,
     FindServiceComponent
-    
   ],
   imports: [
     BrowserModule,
@@ -64,7 +60,11 @@ import {ChatModule} from './bot/chat.module';
     MatGridListModule,
     AppRoutingModule,
     ChatModule,
-    MaterialModule
+    BrowserAnimationsModule,
+    MaterialModule,
+    FlexLayoutModule,
+    MaterialModule,
+    FormsModule
   ],
 
   providers: [],
