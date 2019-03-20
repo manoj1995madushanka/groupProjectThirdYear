@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   MatCheckboxModule,
   MatDatepickerModule,
-  MatInputModule,
+  MatInputModule, MatListModule,
   MatNativeDateModule,
   MatToolbarModule
 } from "@angular/material";
@@ -35,7 +35,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatNativeDateModule,
     MatCheckboxModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatListModule
   ],
   exports: [
     MatButtonModule,
@@ -52,7 +53,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatNativeDateModule,
     MatCheckboxModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatListModule
   ]
 })
 export class MaterialModule { }
