@@ -14,17 +14,18 @@ import {ForumComponent} from './forum/forum.component';
 import {GiveServiceComponent} from './give-service/give-service.component';
 import {ContactUsComponent} from './interface/contact-us/contact-us.component';
 import {PrivacyPolicyComponent} from './interface/privacy-policy/privacy-policy.component';
+import {AuthGuard} from "./auth/auth.guard";
 
 const routes: Routes = [
   {path: '', component: InterfaceComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
   {path: 'bot', component: BotComponent},
-  {path: 'find-service', component: FindServiceComponent},
-  {path: 'for-child', component: ChildComponent},
-  {path: 'for-house-keeping', component: HouseKeeperComponent},
-  {path: 'forum', component: ForumComponent},
-  {path: 'give-service', component: GiveServiceComponent},
+  {path: 'find-service', component: FindServiceComponent, canActivate:[AuthGuard]},
+  {path: 'for-child', component: ChildComponent, canActivate:[AuthGuard]},
+  {path: 'for-house-keeping', component: HouseKeeperComponent, canActivate:[AuthGuard]},
+  {path: 'forum', component: ForumComponent, canActivate:[AuthGuard]},
+  {path: 'give-service', component: GiveServiceComponent, canActivate:[AuthGuard]},
   {path: 'contact-us', component: ContactUsComponent},
   {path: 'privacy-policy', component: PrivacyPolicyComponent}
 ];

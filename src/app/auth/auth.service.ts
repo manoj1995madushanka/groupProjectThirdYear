@@ -28,11 +28,13 @@ export class AuthService {
       userId: Math.round(Math.random() * 10000).toString()
     };
     this.authChange.next(true);
+    this.router.navigate(['/']);
   }
 
   logout() {
     this.user = null;
     this.authChange.next(false);
+    this.router.navigate(['/']);
   }
 
   getUser() {
