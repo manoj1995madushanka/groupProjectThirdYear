@@ -29,7 +29,10 @@ import {ChatModule} from './bot/chat.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule} from '@angular/forms';
 import {SidenavListComponent} from './interface/sidenav-list/sidenav-list.component';
-import {AuthService} from "./auth/auth.service";
+import {AuthService} from './auth/auth.service';
+import {environment} from '../environments/environment';
+
+import  {AngularFireModule} from 'angularfire2';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,8 @@ import {AuthService} from "./auth/auth.service";
     MaterialModule,
     FlexLayoutModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
 
   providers: [AuthService],

@@ -7,6 +7,15 @@ export const environment = {
 
   dialogflow: {
     angularBot: 'fb61df18c368441e94e5afa0e33c2f88'
+  },
+
+  firebase: {
+    apiKey: 'AIzaSyAtm1R9ORNe3gmTz_YAELhrr63PXtQRTQE',
+    authDomain: 'nannylk-83988.firebaseapp.com',
+    databaseURL: 'https://nannylk-83988.firebaseio.com',
+    projectId: 'nannylk-83988',
+    storageBucket: 'nannylk-83988.appspot.com',
+    messagingSenderId: '120740652673'
   }
 
 };
