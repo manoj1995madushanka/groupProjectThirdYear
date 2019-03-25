@@ -3,6 +3,7 @@ import {AuthData} from './auth-data.model';
 import {Subject} from 'rxjs/Subject';
 import {Injectable} from "@angular/core";
 import {Router} from "@angular/router";
+import { AngularFireAuth} from '@angular/fire/auth';
 
 @Injectable()
 export class AuthService {

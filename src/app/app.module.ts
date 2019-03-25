@@ -32,7 +32,10 @@ import {SidenavListComponent} from './interface/sidenav-list/sidenav-list.compon
 import {AuthService} from './auth/auth.service';
 import {environment} from '../environments/environment';
 
-import  {AngularFireModule} from 'angularfire2';
+import {AngularFireModule} from 'angularfire2';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+
 
 @NgModule({
   declarations: [
@@ -67,7 +70,9 @@ import  {AngularFireModule} from 'angularfire2';
     FlexLayoutModule,
     MaterialModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
 
   providers: [AuthService],
