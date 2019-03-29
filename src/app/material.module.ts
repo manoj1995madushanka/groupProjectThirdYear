@@ -36,7 +36,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatCheckboxModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatCardModule
   ],
   exports: [
     MatButtonModule,

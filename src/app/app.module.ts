@@ -35,6 +35,7 @@ import {environment} from '../environments/environment';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+import { SelectUserTypeComponent } from './interface/select-user-type/select-user-type.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
     ExperiencesComponent,
     FeedbacksComponent,
     FindServiceComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    SelectUserTypeComponent
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,7 @@ import {GiveServiceComponent} from './give-service/give-service.component';
 import {ContactUsComponent} from './interface/contact-us/contact-us.component';
 import {PrivacyPolicyComponent} from './interface/privacy-policy/privacy-policy.component';
 import {AuthGuard} from "./auth/auth.guard";
+import {SelectUserTypeComponent} from "./interface/select-user-type/select-user-type.component";
 
 const routes: Routes = [
   {path: '', component: InterfaceComponent},
@@ -25,9 +26,10 @@ const routes: Routes = [
   {path: 'for-child', component: ChildComponent, canActivate:[AuthGuard]},
   {path: 'for-house-keeping', component: HouseKeeperComponent, canActivate:[AuthGuard]},
   {path: 'forum', component: ForumComponent, canActivate:[AuthGuard]},
-  {path: 'give-service', component: GiveServiceComponent, canActivate:[AuthGuard]},
+  {path: 'give-service', component: GiveServiceComponent},
   {path: 'contact-us', component: ContactUsComponent},
-  {path: 'privacy-policy', component: PrivacyPolicyComponent}
+  {path: 'privacy-policy', component: PrivacyPolicyComponent},
+  {path: 'select-user', component: SelectUserTypeComponent}
 ];
 
 @NgModule({
