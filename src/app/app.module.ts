@@ -27,7 +27,7 @@ import {FindServiceComponent} from './findService/findService.component';
 import {AppRoutingModule} from './app-routing.module';
 import {ChatModule} from './bot/chat.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SidenavListComponent} from './interface/sidenav-list/sidenav-list.component';
 import {AuthService} from './auth/auth.service';
 import {environment} from '../environments/environment';
@@ -74,7 +74,8 @@ import { SelectUserTypeComponent } from './interface/select-user-type/select-use
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    ReactiveFormsModule
   ],
 
   providers: [AuthService],
