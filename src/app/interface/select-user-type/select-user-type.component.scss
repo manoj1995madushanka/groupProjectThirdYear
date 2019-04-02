@@ -1,20 +1,17 @@
-.vhp-schwingy-parent.vhp-schwingy-parent-condensed {
-  top: 270px;
+.main{
+  height: 550px;
 }
-.vhp-schwingy-parent.vhp-schwingy-parent-condensed {
-  top: 270px;
+
+.caregiver {
+  width: 45%;
+  height: 200px;
+  //margin-bottom: 50px;
+  float: left;
 }
-.vhp-schwingy-parent {
-  position: absolute;
-  top: 350px;
-  left: 0px;
-  width: 100%;
-  z-index: 100;
-}
-.vhp-schwingy-parent {
-  position: absolute;
-  top: 350px;
-  left: 0;
-  width: 100%;
-  z-index: 100;
+
+.job {
+  width: 45%;
+  height: 200px;
+  //margin-bottom: 50px;
+  float: right;
 }

@@ -36,6 +36,7 @@ import {AngularFireModule} from 'angularfire2';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import { SelectUserTypeComponent } from './interface/select-user-type/select-user-type.component';
+import { NannyComponent } from './interface/select-user-type/nanny/nanny.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { SelectUserTypeComponent } from './interface/select-user-type/select-use
     FeedbacksComponent,
     FindServiceComponent,
     SidenavListComponent,
-    SelectUserTypeComponent
+    SelectUserTypeComponent,
+    NannyComponent
   ],
   imports: [
     BrowserModule,
