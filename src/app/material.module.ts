@@ -4,7 +4,7 @@ import {
   MatCheckboxModule,
   MatDatepickerModule,
   MatInputModule, MatListModule,
-  MatNativeDateModule, MatProgressBar, MatProgressBarModule,
+  MatNativeDateModule, MatProgressBar, MatProgressBarModule, MatSelectModule,
   MatToolbarModule
 } from "@angular/material";
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -38,7 +38,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatToolbarModule,
     MatListModule,
     MatCardModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSelectModule
   ],
   exports: [
     MatButtonModule,
@@ -57,7 +58,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }
