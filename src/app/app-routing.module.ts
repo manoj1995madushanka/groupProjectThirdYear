@@ -17,7 +17,7 @@ import {PrivacyPolicyComponent} from './interface/privacy-policy/privacy-policy.
 import {AuthGuard} from './auth/auth.guard';
 import {SelectUserTypeComponent} from './interface/select-user-type/select-user-type.component';
 import {NannyComponent} from './interface/select-user-type/nanny/nanny.component';
-import {NannySignupComponent} from './auth/nanny-signup/nanny-signup.component';
+import {NannySignupComponent} from './auth/nanny/nanny-signup/nanny-signup.component';
 
 const routes: Routes = [
   {path: '', component: InterfaceComponent},
@@ -33,7 +33,7 @@ const routes: Routes = [
   {path: 'privacy-policy', component: PrivacyPolicyComponent},
   {path: 'select-user', component: SelectUserTypeComponent},
   {path: 'nanny', component: NannyComponent},
-  {path: 'nannysignup', component: NannySignupComponent}
+  {path: 'nsignup', component: NannySignupComponent}
 ];
 
 @NgModule({

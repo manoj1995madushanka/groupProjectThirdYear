@@ -3,9 +3,19 @@ import { CommonModule } from '@angular/common';
 import {
   MatCheckboxModule,
   MatDatepickerModule,
-  MatInputModule, MatListModule,
-  MatNativeDateModule, MatProgressBar, MatProgressBarModule, MatSelectModule,
-  MatToolbarModule
+  MatInputModule,
+  MatListModule,
+  MatNativeDateModule,
+  MatProgressBar,
+  MatProgressBarModule,
+  MatSelectModule,
+  MatToolbarModule,
+  MatAutocompleteSelectedEvent,
+  MatChipInputEvent,
+  MatAutocomplete,
+  MatChipsModule,
+  MatAutocompleteModule,
+  MatRadioModule
 } from "@angular/material";
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule, MatCardTitle} from '@angular/material/card';
@@ -16,6 +26,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [],
@@ -39,7 +50,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatListModule,
     MatCardModule,
     MatProgressBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatChipsModule,
+    MatAutocompleteModule,
+    MatRadioModule
   ],
   exports: [
     MatButtonModule,
@@ -59,7 +73,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatToolbarModule,
     MatListModule,
     MatProgressBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatChipsModule,
+    MatAutocompleteModule,
+    MatRadioModule
   ]
 })
 export class MaterialModule { }
