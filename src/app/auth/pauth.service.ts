@@ -4,8 +4,6 @@ import { Subject } from 'rxjs/Subject';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {AngularFirestore} from '@angular/fire/firestore';
 
-import { User } from './user.model';
-import { AuthData } from './auth-data.model';
 import { Nanny} from './nanny.model';
 
 
@@ -56,7 +54,25 @@ export class PauthService {
       });
   }
 
-  nlogin(authData: AuthData) {
+  registerCustomer(authData: Nanny) {
+    this.afAuth.auth
+      .createUserWithEmailAndPassword(authData.email, authData.password)
+      .then(result => {
+        this.db.collection('customers').doc(result.user.uid).set({
+          name: authData.name,
+          address: authData.address,
+          number: authData.number,
+          email: authData.email
+        });
+        console.log(result);
+        this.authSuccessfully();
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  nlogin(authData: Nanny) {
     this.afAuth.auth
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
@@ -68,7 +84,7 @@ export class PauthService {
       });
   }
 
-  login(authData: AuthData) {
+  clogin(authData: Nanny) {
     this.afAuth.auth
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then(result => {

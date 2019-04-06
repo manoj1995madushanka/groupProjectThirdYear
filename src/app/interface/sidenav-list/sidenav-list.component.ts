@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import {AuthService} from "../../auth/auth.service";
+import {PauthService} from "../../auth/pauth.service";
 
 @Component({
   selector: 'app-sidenav-list',
@@ -9,7 +9,7 @@ import {AuthService} from "../../auth/auth.service";
 export class SidenavListComponent implements OnInit {
   @Output() closeSidenav = new EventEmitter<void>();
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: PauthService) { }
 
   ngOnInit() {
   }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {PauthService} from "../../pauth.service";
 
 @Component({
   selector: 'app-clogin',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CloginComponent implements OnInit {
 
-  constructor() { }
+  loginForm: FormGroup;
+
+  constructor(private authService: PauthService) { }
 
   ngOnInit() {
+    this.loginForm = new FormGroup({
+      email: new FormControl('', {
+        validators: [Validators.required, Validators.email]
+      }),
+      password: new FormControl('', { validators: [Validators.required] })
+    });
+  }
+
+  onSubmit() {
+    this.authService.clogin({
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password
+    });
   }
 
 }

@@ -2,8 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { LoginComponent } from './auth/login/login.component';
 import { BotComponent } from './bot/bot.component';
 import { InterfaceComponent } from './interface/interface.component';
 import { HeaderComponent } from './interface/header/header.component';
@@ -29,7 +27,6 @@ import {ChatModule} from './bot/chat.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SidenavListComponent} from './interface/sidenav-list/sidenav-list.component';
-import {AuthService} from './auth/auth.service';
 import {environment} from '../environments/environment';
 
 import {AngularFireModule} from 'angularfire2';
@@ -41,13 +38,12 @@ import { NannySignupComponent } from './auth/nanny/nanny-signup/nanny-signup.com
 import { NannyLoginComponent } from './auth/nanny/nanny-login/nanny-login.component';
 import { CsignupComponent } from './auth/customer/csignup/csignup.component';
 import { CloginComponent } from './auth/customer/clogin/clogin.component'
+import {PauthService} from "./auth/pauth.service";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent,
-    LoginComponent,
     BotComponent,
     InterfaceComponent,
     HeaderComponent,
@@ -88,7 +84,7 @@ import { CloginComponent } from './auth/customer/clogin/clogin.component'
     ReactiveFormsModule
   ],
 
-  providers: [AuthService],
+  providers: [PauthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import {Component, OnInit, EventEmitter, Output, OnDestroy} from '@angular/core';
-import {AuthService} from "../../auth/auth.service";
+import {PauthService} from "../../auth/pauth.service";
 import {Subscription} from "rxjs/Subscription";
 
 @Component({
@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isAuth = false;
   authSubscription: Subscription;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: PauthService) { }
 
   ngOnInit() {
     this.authSubscription = this.authService.authChange.subscribe(authStatus => {

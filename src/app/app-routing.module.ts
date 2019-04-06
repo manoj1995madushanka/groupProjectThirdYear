@@ -4,8 +4,6 @@ import {RouterModule, Routes} from '@angular/router';
 
 
 import {InterfaceComponent} from './interface/interface.component';
-import {SignupComponent} from './auth/signup/signup.component';
-import {LoginComponent} from './auth/login/login.component';
 import {BotComponent} from './bot/bot.component';
 import {FindServiceComponent} from './findService/findService.component';
 import {ChildComponent} from './findService/child/child.component';
@@ -21,8 +19,6 @@ import {NannySignupComponent} from './auth/nanny/nanny-signup/nanny-signup.compo
 
 const routes: Routes = [
   {path: '', component: InterfaceComponent},
-  {path: 'signup', component: SignupComponent},
-  {path: 'login', component: LoginComponent},
   {path: 'bot', component: BotComponent},
   {path: 'find-service', component: FindServiceComponent, canActivate: [AuthGuard]},
   {path: 'for-child', component: ChildComponent, canActivate: [AuthGuard]},
