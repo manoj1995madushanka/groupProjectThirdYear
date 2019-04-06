@@ -38,7 +38,9 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import { SelectUserTypeComponent } from './interface/select-user-type/select-user-type.component';
 import { NannyComponent } from './interface/select-user-type/nanny/nanny.component';
 import { NannySignupComponent } from './auth/nanny/nanny-signup/nanny-signup.component';
-import { NannyLoginComponent } from './auth/nanny/nanny-login/nanny-login.component'
+import { NannyLoginComponent } from './auth/nanny/nanny-login/nanny-login.component';
+import { CsignupComponent } from './auth/customer/csignup/csignup.component';
+import { CloginComponent } from './auth/customer/clogin/clogin.component'
 
 
 @NgModule({
@@ -65,7 +67,9 @@ import { NannyLoginComponent } from './auth/nanny/nanny-login/nanny-login.compon
     SelectUserTypeComponent,
     NannyComponent,
     NannySignupComponent,
-    NannyLoginComponent
+    NannyLoginComponent,
+    CsignupComponent,
+    CloginComponent
   ],
   imports: [
     BrowserModule,

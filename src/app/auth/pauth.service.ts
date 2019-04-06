@@ -56,6 +56,18 @@ export class PauthService {
       });
   }
 
+  nlogin(authData: AuthData) {
+    this.afAuth.auth
+      .signInWithEmailAndPassword(authData.email, authData.password)
+      .then(result => {
+        console.log(result);
+        this.authSuccessfully();
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   login(authData: AuthData) {
     this.afAuth.auth
       .signInWithEmailAndPassword(authData.email, authData.password)
