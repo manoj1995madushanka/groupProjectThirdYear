@@ -35,6 +35,7 @@ export class PauthService {
     });
   }
 
+// nanny registration
   registerUser(authData: Nanny) {
     this.afAuth.auth
       .createUserWithEmailAndPassword(authData.email, authData.password)
@@ -53,7 +54,7 @@ export class PauthService {
         console.log(error);
       });
   }
-
+// customer registration
   registerCustomer(authData: Nanny) {
     this.afAuth.auth
       .createUserWithEmailAndPassword(authData.email, authData.password)
@@ -71,7 +72,7 @@ export class PauthService {
         console.log(error);
       });
   }
-
+// nanny login
   nlogin(authData: Nanny) {
     this.afAuth.auth
       .signInWithEmailAndPassword(authData.email, authData.password)
@@ -83,7 +84,7 @@ export class PauthService {
         console.log(error);
       });
   }
-
+// customer login
   clogin(authData: Nanny) {
     this.afAuth.auth
       .signInWithEmailAndPassword(authData.email, authData.password)

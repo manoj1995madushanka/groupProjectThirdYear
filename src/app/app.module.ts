@@ -39,6 +39,8 @@ import { NannyLoginComponent } from './auth/nanny/nanny-login/nanny-login.compon
 import { CsignupComponent } from './auth/customer/csignup/csignup.component';
 import { CloginComponent } from './auth/customer/clogin/clogin.component'
 import {PauthService} from "./auth/pauth.service";
+import { LoginAsComponent } from './interface/select-user-type/login-as/login-as.component';
+import { SignupAsComponent } from './interface/select-user-type/signup-as/signup-as.component';
 
 
 @NgModule({
@@ -65,7 +67,9 @@ import {PauthService} from "./auth/pauth.service";
     NannySignupComponent,
     NannyLoginComponent,
     CsignupComponent,
-    CloginComponent
+    CloginComponent,
+    LoginAsComponent,
+    SignupAsComponent
   ],
   imports: [
     BrowserModule,
