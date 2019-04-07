@@ -21,6 +21,7 @@ import {CsignupComponent} from "./auth/customer/csignup/csignup.component";
 import {CloginComponent} from "./auth/customer/clogin/clogin.component";
 import {LoginAsComponent} from "./interface/select-user-type/login-as/login-as.component";
 import {SignupAsComponent} from "./interface/select-user-type/signup-as/signup-as.component";
+import {BlogComponent} from "./blog/blog.component";
 
 const routes: Routes = [
   {path: '', component: InterfaceComponent},
@@ -28,7 +29,7 @@ const routes: Routes = [
   {path: 'find-service', component: FindServiceComponent, canActivate: [AuthGuard]},
   {path: 'for-child', component: ChildComponent, canActivate: [AuthGuard]},
   {path: 'for-house-keeping', component: HouseKeeperComponent, canActivate: [AuthGuard]},
-  {path: 'forum', component: ForumComponent, canActivate: [AuthGuard]},
+  {path: 'forum', component: ForumComponent},
   {path: 'give-service', component: GiveServiceComponent},
   {path: 'contact-us', component: ContactUsComponent},
   {path: 'privacy-policy', component: PrivacyPolicyComponent},
@@ -39,7 +40,9 @@ const routes: Routes = [
   {path: 'csignup', component: CsignupComponent},
   {path: 'clogin', component: CloginComponent},
   {path: 'loginas', component: LoginAsComponent},
-  {path: 'signupas', component: SignupAsComponent}
+  {path: 'signupas', component: SignupAsComponent},
+  {path: 'blog', component: BlogComponent},
+
 ];
 
 @NgModule({

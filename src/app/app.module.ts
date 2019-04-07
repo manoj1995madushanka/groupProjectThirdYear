@@ -41,6 +41,7 @@ import { CloginComponent } from './auth/customer/clogin/clogin.component'
 import {PauthService} from "./auth/pauth.service";
 import { LoginAsComponent } from './interface/select-user-type/login-as/login-as.component';
 import { SignupAsComponent } from './interface/select-user-type/signup-as/signup-as.component';
+import { BlogComponent } from './blog/blog.component';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { SignupAsComponent } from './interface/select-user-type/signup-as/signup
     CsignupComponent,
     CloginComponent,
     LoginAsComponent,
-    SignupAsComponent
+    SignupAsComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
