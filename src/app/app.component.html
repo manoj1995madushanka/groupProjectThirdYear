@@ -12,7 +12,16 @@
       <!--<app-navbar (sidenavToggle)="sidenav.toggle()"></app-navbar>-->
       <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
     <main>
+
+      <!--<div >-->
+        <button class="heartIcon" mat-mini-fab>
+          <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+        </button>
+      <!--</div>-->
+
       <router-outlet></router-outlet>
+
+
     </main>
 
   </mat-sidenav-content>

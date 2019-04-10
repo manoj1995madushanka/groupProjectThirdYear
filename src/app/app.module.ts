@@ -37,12 +37,14 @@ import { NannyComponent } from './interface/select-user-type/nanny/nanny.compone
 import { NannySignupComponent } from './auth/nanny/nanny-signup/nanny-signup.component';
 import { NannyLoginComponent } from './auth/nanny/nanny-login/nanny-login.component';
 import { CsignupComponent } from './auth/customer/csignup/csignup.component';
-import { CloginComponent } from './auth/customer/clogin/clogin.component'
-import {PauthService} from "./auth/pauth.service";
+import { CloginComponent } from './auth/customer/clogin/clogin.component';
+import {PauthService} from './auth/pauth.service';
 import { LoginAsComponent } from './interface/select-user-type/login-as/login-as.component';
 import { SignupAsComponent } from './interface/select-user-type/signup-as/signup-as.component';
 import { BlogComponent } from './blog/blog.component';
-
+import {RouterModule} from '@angular/router';
+import { MatButtonModule} from '@angular/material';
+import { NprofileComponent } from './interface/nprofile/nprofile.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,8 @@ import { BlogComponent } from './blog/blog.component';
     CloginComponent,
     LoginAsComponent,
     SignupAsComponent,
-    BlogComponent
+    BlogComponent,
+    NprofileComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +90,9 @@ import { BlogComponent } from './blog/blog.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule,
+    MatButtonModule
   ],
 
   providers: [PauthService],
