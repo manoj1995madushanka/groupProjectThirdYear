@@ -45,7 +45,10 @@ export class PauthService {
           address: authData.address,
           number: authData.number,
           birthdate: authData.birthdate,
-          email: authData.email
+          email: authData.email,
+          gender: authData.gender,
+          jobType: authData.jobType,
+          town: authData.town
         });
         console.log(result);
         this.authSuccessfully();

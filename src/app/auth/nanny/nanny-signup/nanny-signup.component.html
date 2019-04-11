@@ -14,14 +14,40 @@
       <input  type="text" ngModel name="number" #numberInput="ngModel" matInput placeholder="your contact number">
     </mat-form-field>
 
-   <!-- <mat-form-field>
+    <!--<mat-form-field>
       <mat-radio-group aria-label="Select Gender" [(ngModel)]="sgender" [ngModelOptions]="{standalone: true}">
-        <mat-radio-button *ngFor = "let gen of gender" [value]="gen">{{gen}}</mat-radio-button>
+        <mat-radio-button matInput *ngFor = "let gen of gender" [value]="gen">{{gen }}</mat-radio-button>
         &lt;!&ndash;<mat-radio-button value="Female">Female</mat-radio-button>&ndash;&gt;
       </mat-radio-group>
     </mat-form-field>-->
 
+      <mat-radio-group name="gender" class = "tp-radio-group" [(ngModel)] = "sgender">
+        <mat-radio-button class = "tp-radio-button"
+                          *ngFor = "let gen of gender" [value] = "gen">
+          {{gen}}
+        </mat-radio-button>
+      </mat-radio-group>
 
+
+    <mat-form-field>
+      <mat-select placeholder = "working field"
+                  [(ngModel)] = "selectedJob" name = "job">
+        <mat-option *ngFor = "let job of jobs"
+                    [value] = "job">
+          {{job}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder = "working area"
+                  [(ngModel)] = "selectedLocation" name = "location">
+        <mat-option *ngFor = "let location of locations"
+                    [value] = "location">
+          {{location}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
 
     <mat-form-field>
@@ -60,4 +86,6 @@
     <mat-checkbox ngModel name="agree" required>Agree to terms and conditions.</mat-checkbox>
     <button type="submit" mat-raised-button color="primary" [disabled]  ="f.invalid">Submit</button>
   </form>
+
 </section>
+

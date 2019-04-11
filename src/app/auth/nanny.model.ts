@@ -7,9 +7,11 @@ export interface Nanny {
   number?: string;
   gender ?: string;
   town?: string;
-  kids?: boolean;
-  parents?: boolean;
-  pets?: boolean;
-  home?: boolean;
+  jobType ?: string;
   birthdate?: Date
+}
+
+export interface Fob {
+  value: string;
+  display: string;
 }
