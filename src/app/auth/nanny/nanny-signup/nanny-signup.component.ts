@@ -17,6 +17,7 @@ export class NannySignupComponent implements OnInit {
   seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];*/
   gender = ['Male', 'Female'];
   sgender: string;
+  age: number;
 
   selectedJob: string;
   jobs = [ 'Kids', 'Parents', 'Pets', 'Home' ];

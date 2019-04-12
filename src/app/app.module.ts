@@ -45,6 +45,7 @@ import { BlogComponent } from './blog/blog.component';
 import {RouterModule} from '@angular/router';
 import { MatButtonModule} from '@angular/material';
 import { NprofileComponent } from './interface/nprofile/nprofile.component';
+import { NannyTableComponent } from './interface/nanny-table/nanny-table.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { NprofileComponent } from './interface/nprofile/nprofile.component';
     LoginAsComponent,
     SignupAsComponent,
     BlogComponent,
-    NprofileComponent
+    NprofileComponent,
+    NannyTableComponent
   ],
   imports: [
     BrowserModule,
