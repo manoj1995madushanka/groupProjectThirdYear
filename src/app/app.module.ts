@@ -2,12 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { AuthComponent } from './auth/auth.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { LoginComponent } from './auth/login/login.component';
 import { BotComponent } from './bot/bot.component';
 import { InterfaceComponent } from './interface/interface.component';
-import { NavbarComponent } from './interface/navbar/navbar.component';
 import { HeaderComponent } from './interface/header/header.component';
 import { HomeComponent } from './interface/home/home.component';
 import { NotFoundComponent } from './interface/not-found/not-found.component';
@@ -28,18 +24,34 @@ import { FeedbacksComponent } from './give-service/feedbacks/feedbacks.component
 import {FindServiceComponent} from './findService/findService.component';
 import {AppRoutingModule} from './app-routing.module';
 import {ChatModule} from './bot/chat.module';
-import {FlexLayoutModule} from "@angular/flex-layout";
-import {FormsModule} from "@angular/forms";
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {SidenavListComponent} from './interface/sidenav-list/sidenav-list.component';
+import {environment} from '../environments/environment';
+
+import {AngularFireModule} from 'angularfire2';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import { SelectUserTypeComponent } from './interface/select-user-type/select-user-type.component';
+import { NannyComponent } from './interface/select-user-type/nanny/nanny.component';
+import { NannySignupComponent } from './auth/nanny/nanny-signup/nanny-signup.component';
+import { NannyLoginComponent } from './auth/nanny/nanny-login/nanny-login.component';
+import { CsignupComponent } from './auth/customer/csignup/csignup.component';
+import { CloginComponent } from './auth/customer/clogin/clogin.component';
+import {PauthService} from './auth/pauth.service';
+import { LoginAsComponent } from './interface/select-user-type/login-as/login-as.component';
+import { SignupAsComponent } from './interface/select-user-type/signup-as/signup-as.component';
+import { BlogComponent } from './blog/blog.component';
+import {RouterModule} from '@angular/router';
+import { MatButtonModule} from '@angular/material';
+import { NprofileComponent } from './interface/nprofile/nprofile.component';
+import { NannyTableComponent } from './interface/nanny-table/nanny-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
-    SignupComponent,
-    LoginComponent,
     BotComponent,
     InterfaceComponent,
-    NavbarComponent,
     HeaderComponent,
     HomeComponent,
     NotFoundComponent,
@@ -52,7 +64,19 @@ import {FormsModule} from "@angular/forms";
     PersonalDetailsComponent,
     ExperiencesComponent,
     FeedbacksComponent,
-    FindServiceComponent
+    FindServiceComponent,
+    SidenavListComponent,
+    SelectUserTypeComponent,
+    NannyComponent,
+    NannySignupComponent,
+    NannyLoginComponent,
+    CsignupComponent,
+    CloginComponent,
+    LoginAsComponent,
+    SignupAsComponent,
+    BlogComponent,
+    NprofileComponent,
+    NannyTableComponent
   ],
   imports: [
     BrowserModule,
@@ -64,10 +88,16 @@ import {FormsModule} from "@angular/forms";
     MaterialModule,
     FlexLayoutModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    ReactiveFormsModule,
+    RouterModule,
+    MatButtonModule
   ],
 
-  providers: [],
+  providers: [PauthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

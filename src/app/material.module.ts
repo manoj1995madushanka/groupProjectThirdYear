@@ -1,6 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatCheckboxModule, MatDatepickerModule, MatInputModule, MatNativeDateModule} from "@angular/material";
+import {
+  MatCheckboxModule,
+  MatDatepickerModule,
+  MatInputModule,
+  MatListModule,
+  MatNativeDateModule,
+  MatProgressBar,
+  MatProgressBarModule,
+  MatSelectModule,
+  MatToolbarModule,
+  MatAutocompleteSelectedEvent,
+  MatChipInputEvent,
+  MatAutocomplete,
+  MatChipsModule,
+  MatAutocompleteModule,
+  MatRadioModule, MatRadioGroup
+} from "@angular/material";
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule, MatCardTitle} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
@@ -10,6 +26,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [],
@@ -27,7 +44,16 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatCardModule,
+    MatProgressBarModule,
+    MatSelectModule,
+    MatChipsModule,
+    MatAutocompleteModule,
+    MatRadioModule
   ],
   exports: [
     MatButtonModule,
@@ -42,7 +68,15 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatProgressBarModule,
+    MatSelectModule,
+    MatChipsModule,
+    MatAutocompleteModule,
+    MatRadioModule
   ]
 })
 export class MaterialModule { }
