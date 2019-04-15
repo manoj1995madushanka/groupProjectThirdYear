@@ -23,6 +23,7 @@ import {LoginAsComponent} from "./interface/select-user-type/login-as/login-as.c
 import {SignupAsComponent} from "./interface/select-user-type/signup-as/signup-as.component";
 import {BlogComponent} from "./blog/blog.component";
 import {NprofileComponent} from "./interface/nprofile/nprofile.component";
+import {NannyTableComponent} from "./interface/nanny-table/nanny-table.component";
 
 const routes: Routes = [
   {path: '', component: InterfaceComponent},
@@ -43,7 +44,8 @@ const routes: Routes = [
   {path: 'loginas', component: LoginAsComponent},
   {path: 'signupas', component: SignupAsComponent},
   {path: 'blog', component: BlogComponent},
-  {path: 'nprofile', component: NprofileComponent}
+  {path: 'nprofile', component: NprofileComponent},
+  {path: 'ntable', component: NannyTableComponent}
 
 ];
 

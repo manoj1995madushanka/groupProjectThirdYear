@@ -8,7 +8,8 @@ export interface Nanny {
   gender ?: string;
   town?: string;
   jobType ?: string;
-  birthdate?: Date
+  birthdate?: Date;
+  imgurl?: string
 }
 
 export interface Fob {
