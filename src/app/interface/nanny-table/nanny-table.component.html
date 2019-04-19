@@ -1,6 +1,6 @@
 <div fxLayoutAlign="center center">
   <mat-form-field fxFlex="40%">
-    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Type Location">
   </mat-form-field>
 </div>
 
@@ -29,7 +29,7 @@
       <button mat-raised-button color="primary">Find Nanny</button>
     </mat-cell>-->
     <mat-cell *matCellDef="let element">
-      <button mat-raised-button color="primary">o</button>
+      <button mat-raised-button color="primary"(click)="goProfile(element)">Profile</button>
     </mat-cell>
   </ng-container>
 

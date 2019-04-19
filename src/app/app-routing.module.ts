@@ -5,9 +5,6 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {InterfaceComponent} from './interface/interface.component';
 import {BotComponent} from './bot/bot.component';
-import {FindServiceComponent} from './findService/findService.component';
-import {ChildComponent} from './findService/child/child.component';
-import {HouseKeeperComponent} from './findService/house-keeper/house-keeper.component';
 import {ForumComponent} from './forum/forum.component';
 import {GiveServiceComponent} from './give-service/give-service.component';
 import {ContactUsComponent} from './interface/contact-us/contact-us.component';
@@ -24,13 +21,11 @@ import {SignupAsComponent} from "./interface/select-user-type/signup-as/signup-a
 import {BlogComponent} from "./blog/blog.component";
 import {NprofileComponent} from "./interface/nprofile/nprofile.component";
 import {NannyTableComponent} from "./interface/nanny-table/nanny-table.component";
+import {ProfileComponent} from "./interface/profile/profile.component";
 
 const routes: Routes = [
   {path: '', component: InterfaceComponent},
   {path: 'bot', component: BotComponent},
-  {path: 'find-service', component: FindServiceComponent, canActivate: [AuthGuard]},
-  {path: 'for-child', component: ChildComponent, canActivate: [AuthGuard]},
-  {path: 'for-house-keeping', component: HouseKeeperComponent, canActivate: [AuthGuard]},
   {path: 'forum', component: ForumComponent},
   {path: 'give-service', component: GiveServiceComponent},
   {path: 'contact-us', component: ContactUsComponent},
@@ -44,8 +39,9 @@ const routes: Routes = [
   {path: 'loginas', component: LoginAsComponent},
   {path: 'signupas', component: SignupAsComponent},
   {path: 'blog', component: BlogComponent},
-  {path: 'nprofile', component: NprofileComponent},
-  {path: 'ntable', component: NannyTableComponent}
+  {path: 'ntable', component: NannyTableComponent},
+  {path: 'ntable/nprofile/:id', component: NprofileComponent},
+  {path: 'profile/:id', component: ProfileComponent}
 
 ];
 

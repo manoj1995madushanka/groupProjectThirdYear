@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Subject, Subscription} from 'rxjs';
 import {Nanny} from '../auth/nanny.model';
 import {AngularFirestore} from '@angular/fire/firestore';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,19 @@ export class GetNannyDetailsService {
   private availableExercises: Nanny[] = [];
   private runningExercise: Nanny;
   private fbSubs: Subscription[] = [];
+  private currentUser: Nanny;
+  sname: string;
+  semail: string;
+  saddress: string;
+  snumber: string;
+  sgender: string;
+  stown: string;
+  sjobType: string;
+  sbirthdate: Date;
+  simgurl: string;
+  filterTest: string;
 
-  constructor(private db: AngularFirestore) {}
+  constructor(private db: AngularFirestore, private afAuth: AngularFireAuth) {}
 
   /*fetchAvailableExercises() {
     this.fbSubs.push(this.db
@@ -71,13 +83,60 @@ export class GetNannyDetailsService {
     return { ...this.runningExercise };
   }*/
 
-  fetchCompletedOrCancelledExercises() {
+
+  getNannies() {
     this.fbSubs.push(this.db
       .collection('nanny')
       .valueChanges()
-      .subscribe((exercises: Nanny[]) => {
-        this.finishedExercisesChanged.next(exercises);
+      .subscribe((nannies: Nanny[]) => {
+        this.finishedExercisesChanged.next(nannies);
       }));
+    /*this.db.collection('nanny').snapshotChanges().subscribe((nannies: Nanny[]) =>
+    this.finishedExercisesChanged.next(nannies));*/
+  }
+
+  toProfile(nanny: Nanny) {
+    this.sname = nanny.name;
+    this.semail = nanny.email;
+    this.saddress = nanny.address;
+    this.snumber = nanny.number;
+    this.sgender = nanny.number;
+    this.sgender = nanny.number;
+    this.stown = nanny.town;
+    this.sjobType = nanny.jobType;
+    this.sbirthdate = nanny.birthdate;
+    this.simgurl = nanny.imgurl;
+  }
+
+  getnannies() {
+    return this.db.collection('nanny').snapshotChanges();
+  }
+  getcustomers() {
+    return this.db.collection('customers').snapshotChanges();
+  }
+
+  setnProfile() {
+    this.afAuth.auth.onAuthStateChanged(user => {
+      if (user) {
+        // logged in or user exists
+        console.log(user.uid);
+        /*this.db.collection('nanny').doc(user.uid).ref.get()
+          .then(doc => {
+            if (doc.exists) {
+             /!* return doc.data();*!/
+              console.log(doc.data());
+            } /!*else {
+              this.db.collection('customers').doc(user.uid).ref.get()
+                .then( doc1 => {
+                  /!*return doc1.data();*!/
+                  console.log(doc1.data());
+                });
+            }*!/
+          });*/
+      } else {/**/
+        // not logged in
+      }
+    });
   }
 
   /*cancelSubscriptions() {
@@ -87,5 +146,7 @@ export class GetNannyDetailsService {
   private addDataToDatabase(exercise: Exercise) {
     this.db.collection('finishedExercises').add(exercise);
   }*/
+
+
 
 }

@@ -1,6 +1,7 @@
 export interface Nanny {
-  email: string;
-  password: string;
+  id?: string;
+  email?: string;
+  password?: string;
   nannyId?: string;
   name?: string;
   address?: string;
@@ -9,7 +10,10 @@ export interface Nanny {
   town?: string;
   jobType ?: string;
   birthdate?: Date;
-  imgurl?: string
+  hourlyRate?: number;
+  availability?: string;
+  bio?: string;
+  imgurl?: string;
 }
 
 export interface Fob {

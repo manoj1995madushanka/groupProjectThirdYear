@@ -3,6 +3,7 @@ import {GetNannyDetailsService} from "../get-nanny-details.service";
 import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import {Subscription} from "rxjs";
 import {Nanny} from "../../auth/nanny.model";
+import {Router, RouterModule} from "@angular/router";
 
 @Component({
   selector: 'app-nanny-table',
@@ -14,19 +15,24 @@ export class NannyTableComponent implements OnInit, OnDestroy, AfterViewInit {
   displayedColumns = ['name', 'gender', 'town', 'viewProfile'];
   dataSource = new MatTableDataSource<Nanny>();
   private nChangedSubscription: Subscription;
+  selectedJob :string;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private trainingService: GetNannyDetailsService) {}
+  constructor(private trainingService: GetNannyDetailsService, private router: Router) {
+
+  }
 
   ngOnInit() {
     this.nChangedSubscription = this.trainingService.finishedExercisesChanged.subscribe(
-      (exercises: Nanny[]) => {
-        this.dataSource.data = exercises;
+      (nannies: Nanny[]) => {
+        this.dataSource.data = nannies;
       }
     );
-    this.trainingService.fetchCompletedOrCancelledExercises();
+    this.trainingService.getNannies();
+    this.selectedJob = this.trainingService.filterTest;
+    this.dataSource.filter = this.selectedJob;
   }
 
   ngAfterViewInit() {
@@ -40,6 +46,12 @@ export class NannyTableComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy() {
     this.nChangedSubscription.unsubscribe();
+  }
+
+  goProfile(nanny) {
+    console.log(nanny.id);
+    this.router.navigate(['/ntable/nprofile', nanny.name]);
+    this.trainingService.toProfile(nanny);
   }
 
 
