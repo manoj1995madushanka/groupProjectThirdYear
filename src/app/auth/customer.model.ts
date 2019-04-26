@@ -1,4 +1,4 @@
-export interface Nanny {
+export interface Customer {
   email?: string;
   password?: string;
   nannyId?: string;
@@ -13,9 +13,4 @@ export interface Nanny {
   availability?: string;
   bio?: string;
   imgurl?: string;
-}
-
-export interface Fob {
-  value: string;
-  display: string;
 }

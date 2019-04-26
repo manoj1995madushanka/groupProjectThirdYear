@@ -45,6 +45,9 @@ import { NprofileComponent } from './interface/nprofile/nprofile.component';
 import { NannyTableComponent } from './interface/nanny-table/nanny-table.component';
 import { ProfileComponent } from './interface/profile/profile.component';
 
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { EditProfilesComponent } from './interface/edit-profiles/edit-profiles.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +75,8 @@ import { ProfileComponent } from './interface/profile/profile.component';
     BlogComponent,
     NprofileComponent,
     NannyTableComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditProfilesComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +94,8 @@ import { ProfileComponent } from './interface/profile/profile.component';
     AngularFireAuthModule,
     ReactiveFormsModule,
     RouterModule,
-    MatButtonModule
+    MatButtonModule,
+    AngularFireStorageModule
   ],
 
   providers: [PauthService],

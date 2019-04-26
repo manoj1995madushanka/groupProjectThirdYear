@@ -22,6 +22,7 @@ import {BlogComponent} from "./blog/blog.component";
 import {NprofileComponent} from "./interface/nprofile/nprofile.component";
 import {NannyTableComponent} from "./interface/nanny-table/nanny-table.component";
 import {ProfileComponent} from "./interface/profile/profile.component";
+import {EditProfilesComponent} from "./interface/edit-profiles/edit-profiles.component";
 
 const routes: Routes = [
   {path: '', component: InterfaceComponent},
@@ -41,7 +42,8 @@ const routes: Routes = [
   {path: 'blog', component: BlogComponent},
   {path: 'ntable', component: NannyTableComponent},
   {path: 'ntable/nprofile/:id', component: NprofileComponent},
-  {path: 'profile/:id', component: ProfileComponent}
+  {path: 'profile/:id', component: ProfileComponent},
+  {path: 'edit-profile', component: EditProfilesComponent}
 
 ];
 

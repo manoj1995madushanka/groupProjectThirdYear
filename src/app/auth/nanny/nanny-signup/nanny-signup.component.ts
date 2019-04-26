@@ -25,6 +25,7 @@ export class NannySignupComponent implements OnInit {
   selectedLocation: string;
   locations = [ 'Galle', 'Matara', 'Colombo', 'Nugegoda' ];
 
+
   constructor(private authService: PauthService) {
   }
 
@@ -32,6 +33,7 @@ export class NannySignupComponent implements OnInit {
     this.maxDate = new Date();
     this.maxDate.setFullYear(this.maxDate.getFullYear() - 25);
   }
+
 
   onSubmit(form: NgForm) {
     //  console.log(form);

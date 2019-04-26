@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import {Subject, Subscription} from 'rxjs';
+import {Observable, Subject, Subscription} from 'rxjs';
 import {Nanny} from '../auth/nanny.model';
 import {AngularFirestore} from '@angular/fire/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
+import {Router} from '@angular/router';
+import {forEach} from "@angular/router/src/utils/collection";
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +16,7 @@ export class GetNannyDetailsService {
   exercisesChanged = new Subject<Nanny[]>();
   finishedExercisesChanged = new Subject<Nanny[]>();
   private availableExercises: Nanny[] = [];
-  private runningExercise: Nanny;
+  runningExercise: Nanny;
   private fbSubs: Subscription[] = [];
   private currentUser: Nanny;
   sname: string;
@@ -26,8 +29,45 @@ export class GetNannyDetailsService {
   sbirthdate: Date;
   simgurl: string;
   filterTest: string;
+  selectedid: string;
+  originalNanny = new Subject<Nanny>();
+  oNanny: Subscription[] = [];
 
-  constructor(private db: AngularFirestore, private afAuth: AngularFireAuth) {}
+  constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private router: Router) {
+  }
+
+  parseNanny() {
+    this.afAuth.auth.onAuthStateChanged(user => {
+      if (user) {
+        this.selectedid = user.uid;
+        /*this.oNanny = this.db.collection('nanny').doc(user.uid).ref.get()
+          .then((response) => {
+            return response.data() as Nanny; });*/
+        /*this.db.collection('nanny').doc(user.uid).snapshotChanges().subscribe((data2: Nanny) => {
+          this.exerciseChanged.next(data2);
+        });*/
+        /*this.oNanny = this.db.collection('nanny').doc(user.uid).snapshotChanges().subscribe(user1 => {
+          return {
+            nannyId : user1.payload.id,
+            ...user1.payload.data
+          } as Nanny;
+        });*/
+        /*this.db.collection('nanny').doc(this.selectedid).ref.get().then(data1 => {
+          // console.log('Document data:', data1.data());
+          if (data1.exists) {
+            console.log('Document data:', data1.data() );
+            this.runningExercise = data1 as Nanny;
+             // {{account['accountId']}}
+            /!*this.oNanny.name = data1.get(name);*!/
+          }
+        });*/
+      }});
+  }
+
+  gotoProfile() {
+    // console.log(this.originalNanny.valueOf().name);
+    this.router.navigate(['/profile/' + this.selectedid]);
+  }
 
   /*fetchAvailableExercises() {
     this.fbSubs.push(this.db
@@ -85,12 +125,23 @@ export class GetNannyDetailsService {
 
 
   getNannies() {
-    this.fbSubs.push(this.db
+    const s: Subject<Nanny> = new Subject();
+    this.afAuth.auth.onAuthStateChanged(user => {
+      if (user) {
+
+        this.db.collection('nanny').doc(user.uid).get().subscribe(
+          next => {
+            s.next(next.data());
+          });
+      }
+    });
+    return s as Observable<Nanny>;
+    /*this.fbSubs.push(this.db
       .collection('nanny')
       .valueChanges()
       .subscribe((nannies: Nanny[]) => {
         this.finishedExercisesChanged.next(nannies);
-      }));
+      }));*/
     /*this.db.collection('nanny').snapshotChanges().subscribe((nannies: Nanny[]) =>
     this.finishedExercisesChanged.next(nannies));*/
   }
@@ -109,44 +160,11 @@ export class GetNannyDetailsService {
   }
 
   getnannies() {
-    return this.db.collection('nanny').snapshotChanges();
+    return this.db.collection('nanny').doc(this.selectedid).valueChanges() as Nanny;
   }
   getcustomers() {
     return this.db.collection('customers').snapshotChanges();
   }
-
-  setnProfile() {
-    this.afAuth.auth.onAuthStateChanged(user => {
-      if (user) {
-        // logged in or user exists
-        console.log(user.uid);
-        /*this.db.collection('nanny').doc(user.uid).ref.get()
-          .then(doc => {
-            if (doc.exists) {
-             /!* return doc.data();*!/
-              console.log(doc.data());
-            } /!*else {
-              this.db.collection('customers').doc(user.uid).ref.get()
-                .then( doc1 => {
-                  /!*return doc1.data();*!/
-                  console.log(doc1.data());
-                });
-            }*!/
-          });*/
-      } else {/**/
-        // not logged in
-      }
-    });
-  }
-
-  /*cancelSubscriptions() {
-    this.fbSubs.forEach(sub => sub.unsubscribe());
-  }
-
-  private addDataToDatabase(exercise: Exercise) {
-    this.db.collection('finishedExercises').add(exercise);
-  }*/
-
 
 
 }

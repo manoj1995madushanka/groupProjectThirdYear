@@ -2,15 +2,23 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
 import { AngularFireAuth } from 'angularfire2/auth';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 
 import { Nanny} from './nanny.model';
+import {Observable, of} from "rxjs";
+import {switchMap} from "rxjs/operators";
+import {User} from "firebase";
+import {Customer} from "./customer.model";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class PauthService {
+
+  user: Observable<Nanny>;
+  customer: Observable<Nanny>;
+  currentUserID: string;
 
   authChange = new Subject<boolean>();
   private isAuthenticated = false;
@@ -19,7 +27,27 @@ export class PauthService {
     private router: Router,
     private afAuth: AngularFireAuth,
     private db: AngularFirestore
-  ) {}
+  ) {
+    this.user = this.afAuth.authState.pipe(
+      switchMap(user => {
+        if (user) {
+          this.currentUserID = user.uid;
+          return this.db.doc<Nanny>(`nanny/${user.uid}`).valueChanges()  ;
+        } else {
+          return of(null);
+        }
+      })
+    );
+    this.customer = this.afAuth.authState.pipe(
+      switchMap(user => {
+        if (user) {
+          return this.db.doc<Nanny>(`customers/${user.uid}`).valueChanges()  ;
+        } else {
+          return of(null);
+        }
+      })
+    );
+    }
 
   initAuthListener() {
     this.afAuth.authState.subscribe(user => {
@@ -115,4 +143,84 @@ export class PauthService {
     this.authChange.next(true);
     this.router.navigate(['/']);
   }
+
+
+
+  updateNannyData(nanny: Nanny) {
+
+    console.log(nanny.name);
+    console.log(nanny.address);
+    console.log(nanny.jobType);
+    console.log(nanny.bio);
+    if (nanny.hourlyRate === '') {
+      this.db.collection('customers').doc(this.currentUserID).update({
+        name: nanny.name,
+        number: nanny.number,
+        address: nanny.address,
+        town: nanny.town,
+        availability: nanny.availability,
+      }).then(() => {
+        console.log('updated');
+      });
+    } else {
+      this.db.collection('nanny').doc(this.currentUserID).update({
+        name: nanny.name,
+        number: nanny.number,
+        address: nanny.address,
+        town: nanny.town,
+        jobType: nanny.jobType,
+        hourlyRate: nanny.hourlyRate,
+        availability: nanny.availability,
+        bio: nanny.bio
+      }).then(() => {
+        console.log('updated');
+      });
+    }
+
+    // Sets user data to firestore on login
+
+    /*const userRef: AngularFirestoreDocument<any> = this.db.doc(`nanny/${user.uid}`);
+
+    const data: Nanny = {
+      /!*uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL*!/
+      name: user.name,
+      number: user.number,
+      jobType: user.jobType,
+      town: user.town,
+      hourlyRate: user.hourlyRate,
+      availability: user.availability,
+      address: user.address,
+      bio: user.bio
+    }
+
+    return userRef.set(data, { merge: true });*/
+
+  }
+
+  updateCustomerData(user) {
+    // Sets user data to firestore on login
+
+    const userRef: AngularFirestoreDocument<any> = this.db.doc(`customers/${user.uid}`);
+
+
+    const data: Nanny = {
+      /*uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL*/
+      name: user.name,
+      number: user.number,
+      town: user.town,
+      address: user.address,
+      bio: user.bio
+    }
+
+    return userRef.set(data, { merge: true });
+
+  }
+
+
 }

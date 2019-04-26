@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import {GetNannyDetailsService} from '../get-nanny-details.service';
 import {Nanny} from '../../auth/nanny.model';
-import {Subject} from "rxjs";
-import {Subscription} from "rxjs";
+import {Subject} from 'rxjs';
+import {Subscription} from 'rxjs';
+import {PauthService} from "../../auth/pauth.service";
 
 @Component({
   selector: 'app-profile',
@@ -11,18 +12,16 @@ import {Subscription} from "rxjs";
 })
 export class ProfileComponent implements OnInit {
 
-  profileData: Nanny[];
+  nprofileData: Nanny;
+  cprofileData: Nanny[];
+  nLoop: Nanny[];
+  pronan: Nanny;
+  temp: Nanny;
 
-  constructor(private profile: GetNannyDetailsService) { }
+  editMode = false;
 
-  ngOnInit() {
-    this.profile.getnannies().subscribe(data => {
-      this.profileData = data.map(item => {
-        return {
-          id: item.payload.doc.id,
-          ...item.payload.doc.data()};
-      });
-    });
+  constructor(public auth: PauthService) {
   }
+  ngOnInit() {}
 
 }

@@ -35,6 +35,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   goProfile() {
-    this.profileSetup.setnProfile();
+    this.profileSetup.gotoProfile();
   }
 }
