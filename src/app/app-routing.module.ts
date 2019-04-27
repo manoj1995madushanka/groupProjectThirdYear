@@ -23,6 +23,8 @@ import {NprofileComponent} from "./interface/nprofile/nprofile.component";
 import {NannyTableComponent} from "./interface/nanny-table/nanny-table.component";
 import {ProfileComponent} from "./interface/profile/profile.component";
 import {EditProfilesComponent} from "./interface/edit-profiles/edit-profiles.component";
+import {ShowRatingsComponent} from "./rating/show-ratings/show-ratings.component";
+import {RatingComponent} from "./rating/rating.component";
 
 const routes: Routes = [
   {path: '', component: InterfaceComponent},
@@ -43,7 +45,8 @@ const routes: Routes = [
   {path: 'ntable', component: NannyTableComponent},
   {path: 'ntable/nprofile/:id', component: NprofileComponent},
   {path: 'profile/:id', component: ProfileComponent},
-  {path: 'edit-profile', component: EditProfilesComponent}
+  {path: 'edit-profile', component: EditProfilesComponent},
+  {path: 'rating', component: RatingComponent}
 
 ];
 

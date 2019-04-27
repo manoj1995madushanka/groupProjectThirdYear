@@ -19,6 +19,8 @@ export class PauthService {
   user: Observable<Nanny>;
   customer: Observable<Nanny>;
   currentUserID: string;
+  selectedUserDoc: AngularFirestoreDocument<any>;
+  currentUserDoc: AngularFirestoreDocument<any>;
 
   authChange = new Subject<boolean>();
   private isAuthenticated = false;
@@ -31,7 +33,7 @@ export class PauthService {
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
-          this.currentUserID = user.uid;
+
           return this.db.doc<Nanny>(`nanny/${user.uid}`).valueChanges()  ;
         } else {
           return of(null);
@@ -69,6 +71,7 @@ export class PauthService {
       .createUserWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
         this.db.collection('nanny').doc(result.user.uid).set({
+          Id: result.user.uid,
           name: authData.name,
           address: authData.address,
           number: authData.number,
@@ -78,6 +81,8 @@ export class PauthService {
           jobType: authData.jobType,
           town: authData.town
         });
+        this.currentUserID = result.user.uid;
+        this.currentUserDoc = this.db.collection('nanny').doc(result.user.uid);
         console.log(result);
         this.authSuccessfully();
       })
@@ -91,11 +96,14 @@ export class PauthService {
       .createUserWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
         this.db.collection('customers').doc(result.user.uid).set({
+          Id: result.user.uid,
           name: authData.name,
           address: authData.address,
           number: authData.number,
           email: authData.email
         });
+        this.currentUserID = result.user.uid;
+        this.currentUserDoc = this.db.collection('customers').doc(result.user.uid);
         console.log(result);
         this.authSuccessfully();
       })
@@ -109,6 +117,8 @@ export class PauthService {
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
         console.log(result);
+        this.currentUserID = result.user.uid;
+        this.currentUserDoc = this.db.collection('nanny').doc(result.user.uid);
         this.authSuccessfully();
       })
       .catch(error => {
@@ -121,6 +131,8 @@ export class PauthService {
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
         console.log(result);
+        this.currentUserID = result.user.uid;
+        this.currentUserDoc = this.db.collection('customers').doc(result.user.uid);
         this.authSuccessfully();
       })
       .catch(error => {
@@ -129,6 +141,7 @@ export class PauthService {
   }
 
   logout() {
+    this.currentUserID = '';
     this.isAuthenticated = false;
     this.authChange.next(false);
     this.router.navigate(['/login']);

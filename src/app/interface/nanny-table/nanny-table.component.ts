@@ -4,6 +4,8 @@ import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import {Subscription} from "rxjs";
 import {Nanny} from "../../auth/nanny.model";
 import {Router, RouterModule} from "@angular/router";
+import {PauthService} from "../../auth/pauth.service";
+import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-nanny-table',
@@ -15,12 +17,15 @@ export class NannyTableComponent implements OnInit, OnDestroy, AfterViewInit {
   displayedColumns = ['name', 'gender', 'town', 'viewProfile'];
   dataSource = new MatTableDataSource<Nanny>();
   private nChangedSubscription: Subscription;
-  selectedJob :string;
+  selectedJob: string;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private trainingService: GetNannyDetailsService, private router: Router) {
+  constructor(private trainingService: GetNannyDetailsService,
+              private router: Router,
+              private authS: PauthService,
+              public db: AngularFirestore) {
 
   }
 
@@ -49,7 +54,9 @@ export class NannyTableComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   goProfile(nanny) {
-    console.log(nanny.id);
+    console.log(nanny.Id);
+    console.log("current id "+ this.authS.currentUserID);
+    this.authS.selectedUserDoc = this.db.collection('nanny').doc(nanny.Id);
     this.router.navigate(['/ntable/nprofile', nanny.name]);
     this.trainingService.toProfile(nanny);
   }
