@@ -1,6 +1,8 @@
 import {Component, OnInit, EventEmitter, Output, OnDestroy} from '@angular/core';
-import {PauthService} from "../../auth/pauth.service";
-import {Subscription} from "rxjs/Subscription";
+import {PauthService} from '../../auth/pauth.service';
+import {Subscription} from 'rxjs/Subscription';
+import {GetNannyDetailsService} from '../get-nanny-details.service';
+
 
 @Component({
   selector: 'app-header',
@@ -12,7 +14,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isAuth = false;
   authSubscription: Subscription;
 
-  constructor(private authService: PauthService) { }
+  constructor(private authService: PauthService, private profileSetup: GetNannyDetailsService) { }
 
   ngOnInit() {
     this.authSubscription = this.authService.authChange.subscribe(authStatus => {
@@ -32,4 +34,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authSubscription.unsubscribe();
   }
 
+  goProfile() {
+    this.profileSetup.gotoProfile();
+  }
 }

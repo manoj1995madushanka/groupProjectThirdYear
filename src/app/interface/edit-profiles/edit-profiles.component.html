@@ -1,0 +1,706 @@
+<div *ngIf="auth.user | async; then nAuthenticated else guest">
+</div>
+
+<div *ngIf="auth.customer | async; then cAuthenticated">
+</div>
+
+
+<ng-template #nAuthenticated>
+  <div *ngIf="auth.user | async as user">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+          <form (ngSubmit)="onSubmit()" #f="ngForm">
+            <!--<div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">-->
+              <div class="form-group">
+                <label for="username">Full Name</label>
+                <input type="text" id="username" class="form-control" ngModel name="username" required placeholder={{user.name}}>
+              </div>
+              <div class="form-group">
+                <label for="address">Your Address</label>
+                <input type="text" id="address" class="form-control" ngModel name="address" required address #address="ngModel" placeholder={{user.address}}>
+              </div>
+            <div class="form-group">
+              <label for="number">Your Mobile Number</label>
+              <input type="text" id="number" class="form-control" ngModel name="number" required number #number="ngModel" placeholder={{user.number}}>
+            </div>
+            <div class="form-group">
+              <label for="rate">Your Hourly Payment Value Rs.</label>
+              <input type="text" id="rate" class="form-control" ngModel name="rate" required rate #rate="ngModel" placeholder="250">
+            </div>
+            <!--&lt;!&ndash;</div>&ndash;&gt;
+            &lt;!&ndash;<p *ngIf="!userData.valid && userData.touched">User Data is invalid!</p>&ndash;&gt;-->
+            <div class="form-group">
+              <label for="job">Your working category</label>
+              <select id="job" class="form-control" ngModel name="job" required job #job="ngModel">
+                <option value="Kids">Kids</option>
+                <option value="Parents">Parents</option>
+                <option value="Home">Home</option>
+                <option value="Pets">Pets</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="workingMode">Your working category</label>
+              <select id="workingMode" class="form-control" ngModel name="workingMode" required workingMode #workingMode="ngModel">
+                <option value="Available">Available</option>
+                <option value="Busy">Busy</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="workingTown">Your working area</label>
+              <select id="workingTown" class="form-control" ngModel name="workingTown" required workingTown #workingTown="ngModel">
+                <option value="Galle">Galle</option>
+                <option value="Colombo">Colombo</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea id="bio" rows="3" class="form-control" ngModel name="bio" required bio #bio="ngModel" placeholder={{user.bio}}></textarea>
+            </div>
+            <!--<p>Your reply: {{ answer }}</p>
+            <div class="radio" *ngFor="let gender of genders">
+              <label>
+                <input type="radio" name="gender" ngModel [value]="gender" required>{{ gender }}
+              </label>
+            </div>-->
+            <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+          </form>
+        </div>
+      </div>
+      <hr>
+    </div>
+
+  </div>
+</ng-template>
+
+
+<ng-template #cAuthenticated>
+  <div *ngIf="auth.user | async as user">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+          <form (ngSubmit)="oncSubmit()" #cf="ngForm">
+            <!--<div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">-->
+            <div class="form-group">
+              <label for="cusername">Full Name</label>
+              <input type="text" id="cusername" class="form-control" ngModel name="cusername" required placeholder={{user.name}}>
+            </div>
+            <div class="form-group">
+              <label for="caddress">Your Address</label>
+              <input type="text" id="caddress" class="form-control" ngModel name="caddress" required caddress #caddress="ngModel" placeholder={{user.address}}>
+            </div>
+            <div class="form-group">
+              <label for="cnumber">Your Mobile Number</label>
+              <input type="text" id="cnumber" class="form-control" ngModel name="cnumber" required cnumber #cnumber="ngModel" placeholder={{user.number}}>
+            </div>
+            <!--<div class="form-group">
+              <label for="rate">Your Hourly Payment Value Rs.</label>
+              <input type="text" id="rate" class="form-control" ngModel name="rate" required rate #rate="ngModel">
+            </div>-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;
+            &lt;!&ndash;<p *ngIf="!userData.valid && userData.touched">User Data is invalid!</p>&ndash;&gt;-->
+            <!--<div class="form-group">
+              <label for="job">Your working category</label>
+              <select id="job" class="form-control" ngModel name="job" required job #job="ngModel">
+                <option value="Kids">Kids</option>
+                <option value="Parents">Parents</option>
+                <option value="Home">Home</option>
+                <option value="Pets">Pets</option>
+              </select>
+            </div>-->
+            <div class="form-group">
+              <label for="cworkingMode">What for you looking for nanny?</label>
+              <select id="cworkingMode" class="form-control" ngModel name="cworkingMode" required cworkingMode #cworkingMode="ngModel">
+                <option value="Personal need">For personal need</option>
+                <option value="For hire nannies">For hire nannies</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cworkingTown">Your Town</label>
+              <select id="cworkingTown" class="form-control" ngModel name="cworkingTown" required cworkingTown #cworkingTown="ngModel">
+                <option value="Galle">Galle</option>
+                <option value="Colombo">Colombo</option>
+              </select>
+            </div>
+            <!--<div class="form-group">
+              <textarea id="bio" rows="3" class="form-control" ngModel name="bio" required bio #bio="ngModel"></textarea>
+            </div>-->
+            <!--<p>Your reply: {{ answer }}</p>
+            <div class="radio" *ngFor="let gender of genders">
+              <label>
+                <input type="radio" name="gender" ngModel [value]="gender" required>{{ gender }}
+              </label>
+            </div>-->
+            <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+          </form>
+        </div>
+      </div>
+      <hr>
+    </div>
+
+  </div>
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<ng-template #nAuthenticated>
+  <div *ngIf="auth.user | async as user">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+          <form (ngSubmit)="onSubmit()" #f="ngForm">
+            <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+              <div class="form-group">
+                <label for="name">Your Full Name</label>
+                <input type="text" id="name" class="form-control" ngModel name="name" required placeholder={{user.name}}>
+              </div>
+              &lt;!&ndash;<button
+                class="btn btn-default"
+                type="button"
+                (click)="suggestUserName()">Suggest an Username</button>&ndash;&gt;
+              <div class="form-group">
+                <label for="number">Mobile Number</label>
+                <input type="text" id="number" class="form-control" ngModel name="number" required number #number="ngModel" placeholder="{{user.number}}">
+                &lt;!&ndash;<span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span>&ndash;&gt;
+              </div>
+            </div>
+            <p *ngIf="!userData.valid && userData.touched">User Data is invalid!</p>
+            <div class="form-group">
+              <label for="secret">Secret Questions</label>
+              <select id="secret" class="form-control" [ngModel]="defaultQuestion" name="secret">
+                <option value="pet">Your first Pet?</option>
+                <option value="teacher">Your first teacher?</option>
+              </select>
+            </div>
+            <div class="form-group">
+          <textarea name="questionAnswer" rows="3" class="form-control" [(ngModel)]="answer"></textarea>
+            </div>
+            <p>Your reply: {{ answer }}</p>
+            <div class="radio" *ngFor="let gender of genders">
+              <label>
+                <input type="radio" name="gender" ngModel [value]="gender" required>
+                {{ gender }}
+              </label>
+            </div>
+            <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+          </form>
+        </div>
+      </div>
+      <hr>
+      <div class="row" *ngIf="submitted">
+        <div class="col-xs-12">
+          <h3>Your Data</h3>
+          <p>Username: {{ user.username }}</p>
+          <p>Mail: {{ user.email }}</p>
+          <p>Secret Question: Your first {{ user.secretQuestion }}</p>
+          <p>Answer: {{ user.answer }}</p>
+          <p>Gender: {{ user.gender }}</p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</ng-template>-->
+
+
+<!-- User NOT logged in -->
+<!--<ng-template #guest>
+  <h3>Howdy, GUEST</h3>
+  <p>Login to get started...</p>
+
+  &lt;!&ndash;<button (click)="auth.googleLogin()">
+    <i class="fa fa-google"></i> Connect Google
+  </button>&ndash;&gt;
+
+</ng-template>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- User logged in -->
+<!--<ng-template #nAuthenticated>
+  &lt;!&ndash;<div *ngIf="auth.user | async as user">
+    <h3>Howdy, {{ user.name }}</h3>
+    &lt;!&ndash;<img  [src]="user.photoURL">&ndash;&gt;
+    <p>UID: {{ user.uid }}</p>
+    <p>Favorite Color: {{ user?.address }} </p>
+    &lt;!&ndash;<button (click)="auth.signOut()">Logout</button>&ndash;&gt;
+  </div>&ndash;&gt;
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  &lt;!&ndash;&#45;&#45;&#45;&#45; Include the above in your HEAD tag &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;
+
+  <div class="container emp-profile">
+
+    <div *ngIf="auth.user | async as user">
+
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div class="row" >
+          <div class="col-md-4">
+            <div class="profile-img">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+              <div class="file btn btn-lg btn-primary">
+                Change Photo
+                <input type="file" name="file"/>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="profile-head">
+              <h5>
+                {{ user.name }}
+              </h5>
+              <h6>
+                {{ user.number }}
+              </h6>
+              <mat-form-field>
+                <input  type="text" ngModel name="address" #addressInput="ngModel" matInput placeholder= {{user.address}} >
+              </mat-form-field>
+              <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-2">
+            &lt;!&ndash;<input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>&ndash;&gt;
+            <button type="submit" mat-raised-button color="primary" [disabled]  ="f.invalid">Save Data</button>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+
+            <div class="profile-work">
+              <mat-form-field>
+                <input  type="text" ngModel name="bio" #bioInput="ngModel" matInput placeholder= "fill your bio">
+              </mat-form-field>
+
+              &lt;!&ndash;<div class="col-md-2">
+                &lt;!&ndash;<input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>&ndash;&gt;
+                <button mat-raised-button color="primary" >Give Review</button>
+              </div>&ndash;&gt;
+              &lt;!&ndash;<p>WORK LINK</p>
+              <a href="">Website Link</a><br/>
+              <a href="">Bootsnipp Profile</a><br/>
+              <a href="">Bootply Profile</a>
+              <p>SKILLS</p>
+              <a href="">Web Designer</a><br/>
+              <a href="">Web Developer</a><br/>
+              <a href="">WordPress</a><br/>
+              <a href="">WooCommerce</a><br/>
+              <a href="">PHP, .Net</a><br/>&ndash;&gt;
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="tab-content profile-tab" id="myTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                &lt;!&ndash;<div class="row">
+                  <div class="col-md-6">
+                    <label>User Id</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>Kshiti123</p>
+                  </div>
+                </div>&ndash;&gt;
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Name</label>
+                  </div>
+                  <div class="col-md-6">
+                    <input  type="text" name="name" ngModel matInput placeholder={{user.name}}>
+                    &lt;!&ndash;<mat-form-field>
+                      <input  type="text" ngModel name="name" #nameInput="ngModel" matInput placeholder= {{user.name}}>
+                    </mat-form-field>&ndash;&gt;
+                    &lt;!&ndash;<mat-form-field>
+                      <input  type="text" [ngModelOptions]="{standalone: true}" name="name" [(ngModel)]="name" #nameInput="ngModel" matInput placeholder= {{user.name}}>
+                    </mat-form-field>&ndash;&gt;
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Email</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>{{ user.email }}</p>
+                  </div>
+                </div>
+                &lt;!&ndash;<div class="row">
+                  <div class="col-md-6">
+                    <label>Email</label>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field>
+                      <input  type="text" ngModel name="name" #nameInput="ngModel" matInput placeholder= {{user.email}}>
+                    </mat-form-field>
+                  </div>
+                </div>&ndash;&gt;
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Phone</label>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field>
+                      <input  type="text" ngModel name="number" #numberInput="ngModel" matInput placeholder= {{user.number}}>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Profession</label>
+                  </div>
+                  <div class="col-md-6">
+                    &lt;!&ndash;<p>{{ user.jobType }}</p>&ndash;&gt;
+                    <mat-form-field>
+                      <mat-select placeholder = {{user.jobType}}
+                                  [(ngModel)] = "selectedJob" name = "job">
+                        <mat-option *ngFor = "let job of jobs"
+                                    [value] = "job">
+                          {{job}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Working Town</label>
+                  </div>
+                  <div class="col-md-6">
+                    &lt;!&ndash;<p>{{ user.town }}</p>&ndash;&gt;
+                    <mat-form-field>
+                      <mat-select placeholder = "working area"
+                                  [(ngModel)] = "selectedLocation" name = "location">
+                        <mat-option *ngFor = "let location of locations"
+                                    [value] = "location">
+                          {{location}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Hourly Rate</label>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field>
+                      <input  type="text" ngModel name="hourlyRate" #hourlyRateInput="ngModel" matInput placeholder= "fill your hourly payment rate">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Availability</label>
+                  </div>
+                  <div class="col-md-6">
+                    &lt;!&ndash;<p>6 months</p>&ndash;&gt;
+                    <mat-form-field>
+                      <mat-select placeholder = "edit working mode"
+                                  [(ngModel)] = "selectedAvailability" name = "availability">
+                        <mat-option *ngFor = "let availability of availabilities"
+                                    [value] = "availability">
+                          {{availability}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                &lt;!&ndash; <div class="row">
+                   <div class="col-md-6">
+                     <label>Experience</label>
+                   </div>
+                   <div class="col-md-6">
+                     <p>Expert</p>
+                   </div>
+                 </div>&ndash;&gt;
+
+                &lt;!&ndash;<div class="row">
+                  <div class="col-md-6">
+                    <label>Total Projects</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>230</p>
+                  </div>
+                </div>&ndash;&gt;
+                &lt;!&ndash;<div class="row">
+                  <div class="col-md-6">
+                    <label>English Level</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>Expert</p>
+                  </div>
+                </div>&ndash;&gt;
+
+               &lt;!&ndash; <div class="row">
+                  <div class="col-md-12">
+                    <label>Your Bio</label><br/>
+                    <p>Your detail description</p>
+                  </div>
+                </div>&ndash;&gt;
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</ng-template>-->
+
+<!--<ng-template #cAuthenticated>
+  &lt;!&ndash;<div *ngIf="auth.user | async as user">
+    <h3>Howdy, {{ user.name }}</h3>
+    &lt;!&ndash;<img  [src]="user.photoURL">&ndash;&gt;
+    <p>UID: {{ user.uid }}</p>
+    <p>Favorite Color: {{ user?.address }} </p>
+    &lt;!&ndash;<button (click)="auth.signOut()">Logout</button>&ndash;&gt;
+  </div>&ndash;&gt;
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  &lt;!&ndash;&#45;&#45;&#45;&#45; Include the above in your HEAD tag &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;
+
+  <div class="container emp-profile">
+
+    <div *ngIf="auth.customer | async as user">
+
+      <form #f="ngForm" (ngSubmit)="customerSubmit(f)">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="profile-img">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+              <div class="file btn btn-lg btn-primary">
+                Change Photo
+                <input type="file" name="file"/>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="profile-head">
+              <h5>
+                {{ user.name }}
+              </h5>
+              <h6>
+                {{ user.number }}
+              </h6>
+              <mat-form-field>
+                <input  type="text" ngModel name="name" #nameInput="ngModel" matInput placeholder= {{user.address}} >
+              </mat-form-field>
+              <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-2">
+            &lt;!&ndash;<input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>&ndash;&gt;
+            <button mat-raised-button color="primary" >Save Data</button>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+
+            <div class="profile-work">
+
+              <div class="profile-work">
+                <mat-form-field>
+                  <input  type="text" ngModel name="bio" #bioInput="ngModel" matInput placeholder= "fill your bio">
+                </mat-form-field>
+
+              &lt;!&ndash;<div class="col-md-2">
+                &lt;!&ndash;<input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>&ndash;&gt;
+                <button mat-raised-button color="primary" >Give Review</button>
+              </div>&ndash;&gt;
+              &lt;!&ndash;<p>WORK LINK</p>
+              <a href="">Website Link</a><br/>
+              <a href="">Bootsnipp Profile</a><br/>
+              <a href="">Bootply Profile</a>
+              <p>SKILLS</p>
+              <a href="">Web Designer</a><br/>
+              <a href="">Web Developer</a><br/>
+              <a href="">WordPress</a><br/>
+              <a href="">WooCommerce</a><br/>
+              <a href="">PHP, .Net</a><br/>&ndash;&gt;
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="tab-content profile-tab" id="myTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                &lt;!&ndash;<div class="row">
+                  <div class="col-md-6">
+                    <label>User Id</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>Kshiti123</p>
+                  </div>
+                </div>&ndash;&gt;
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Name</label>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field>
+                      <input  type="text" ngModel name="name" #nameInput="ngModel" matInput placeholder= {{user.name}}>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Email</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>{{ user.email }}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Phone</label>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field>
+                      <input  type="text" ngModel name="number" #numberInput="ngModel" matInput placeholder= {{user.number}}>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Phone</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>{{ user.number }}</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  &lt;!&ndash;<p>{{ user.town }}</p>&ndash;&gt;
+                  <mat-form-field>
+                    <mat-select placeholder = "working area"
+                                [(ngModel)] = "selectedLocation" name = "location">
+                      <mat-option *ngFor = "let location of locations"
+                                  [value] = "location">
+                        {{location}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                &lt;!&ndash;<div class="row">
+                  <div class="col-md-6">
+                    <label>Profession</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>{{ user.jobType }}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Working Town</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>{{ user.town }}</p>
+                  </div>
+                </div>&ndash;&gt;
+              </div>
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                &lt;!&ndash; <div class="row">
+                   <div class="col-md-6">
+                     <label>Experience</label>
+                   </div>
+                   <div class="col-md-6">
+                     <p>Expert</p>
+                   </div>
+                 </div>&ndash;&gt;
+                &lt;!&ndash;<div class="row">
+                  <div class="col-md-6">
+                    <label>Hourly Rate</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>10$/hr</p>
+                  </div>
+                </div>&ndash;&gt;
+                &lt;!&ndash;<div class="row">
+                  <div class="col-md-6">
+                    <label>Total Projects</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>230</p>
+                  </div>
+                </div>&ndash;&gt;
+                &lt;!&ndash;<div class="row">
+                  <div class="col-md-6">
+                    <label>English Level</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>Expert</p>
+                  </div>
+                </div>&ndash;&gt;
+                &lt;!&ndash;<div class="row">
+                  <div class="col-md-6">
+                    <label>Availability</label>
+                  </div>
+                  <div class="col-md-6">
+                    <p>6 months</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <label>Your Bio</label><br/>
+                    <p>Your detail description</p>
+                  </div>
+                </div>&ndash;&gt;
+              &lt;!&ndash;</div>&ndash;&gt;
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</ng-template>-->

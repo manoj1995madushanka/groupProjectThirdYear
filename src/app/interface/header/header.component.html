@@ -23,7 +23,14 @@
       </li>
 
       <li *ngIf="isAuth">
-        <a  style="cursor: pointer;" (click)="onLogout()">Logout</a>
+        <a  style="cursor: pointer;" (click)="goProfile()">
+          <mat-icon>perm_identity</mat-icon>
+        </a>
+      </li>
+      <li *ngIf="isAuth">
+        <a  style="cursor: pointer;" (click)="onLogout()">
+          <mat-icon>eject</mat-icon>
+        </a>
       </li>
     </ul>
   </div>

@@ -7,8 +7,6 @@ import { InterfaceComponent } from './interface/interface.component';
 import { HeaderComponent } from './interface/header/header.component';
 import { HomeComponent } from './interface/home/home.component';
 import { NotFoundComponent } from './interface/not-found/not-found.component';
-import { ChildComponent } from './findService/child/child.component';
-import { HouseKeeperComponent } from './findService/house-keeper/house-keeper.component';
 import { GiveServiceComponent } from './give-service/give-service.component';
 import { ForumComponent } from './forum/forum.component';
 import { ContactUsComponent } from './interface/contact-us/contact-us.component';
@@ -21,7 +19,6 @@ import { MaterialModule } from './material.module';
 import { PersonalDetailsComponent } from './give-service/personal-details/personal-details.component';
 import { ExperiencesComponent } from './give-service/experiences/experiences.component';
 import { FeedbacksComponent } from './give-service/feedbacks/feedbacks.component';
-import {FindServiceComponent} from './findService/findService.component';
 import {AppRoutingModule} from './app-routing.module';
 import {ChatModule} from './bot/chat.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -46,6 +43,10 @@ import {RouterModule} from '@angular/router';
 import { MatButtonModule} from '@angular/material';
 import { NprofileComponent } from './interface/nprofile/nprofile.component';
 import { NannyTableComponent } from './interface/nanny-table/nanny-table.component';
+import { ProfileComponent } from './interface/profile/profile.component';
+
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { EditProfilesComponent } from './interface/edit-profiles/edit-profiles.component';
 
 @NgModule({
   declarations: [
@@ -55,8 +56,6 @@ import { NannyTableComponent } from './interface/nanny-table/nanny-table.compone
     HeaderComponent,
     HomeComponent,
     NotFoundComponent,
-    ChildComponent,
-    HouseKeeperComponent,
     GiveServiceComponent,
     ForumComponent,
     ContactUsComponent,
@@ -64,7 +63,6 @@ import { NannyTableComponent } from './interface/nanny-table/nanny-table.compone
     PersonalDetailsComponent,
     ExperiencesComponent,
     FeedbacksComponent,
-    FindServiceComponent,
     SidenavListComponent,
     SelectUserTypeComponent,
     NannyComponent,
@@ -76,7 +74,9 @@ import { NannyTableComponent } from './interface/nanny-table/nanny-table.compone
     SignupAsComponent,
     BlogComponent,
     NprofileComponent,
-    NannyTableComponent
+    NannyTableComponent,
+    ProfileComponent,
+    EditProfilesComponent
   ],
   imports: [
     BrowserModule,
@@ -94,7 +94,8 @@ import { NannyTableComponent } from './interface/nanny-table/nanny-table.compone
     AngularFireAuthModule,
     ReactiveFormsModule,
     RouterModule,
-    MatButtonModule
+    MatButtonModule,
+    AngularFireStorageModule
   ],
 
   providers: [PauthService],

@@ -15,7 +15,7 @@ import {
   MatAutocomplete,
   MatChipsModule,
   MatAutocompleteModule,
-  MatRadioModule, MatRadioGroup
+  MatRadioModule, MatRadioGroup, MatTableModule, MatSortModule, MatPaginatorModule
 } from "@angular/material";
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule, MatCardTitle} from '@angular/material/card';
@@ -53,7 +53,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSelectModule,
     MatChipsModule,
     MatAutocompleteModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   exports: [
     MatButtonModule,
@@ -76,7 +79,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSelectModule,
     MatChipsModule,
     MatAutocompleteModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
   ]
 })
 export class MaterialModule { }
