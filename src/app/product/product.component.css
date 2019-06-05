@@ -1,0 +1,17 @@
+.product{
+    /* border:1px solid black; */
+    padding:10px;
+    margin:10px;
+    text-align: justify;
+    max-width: 100%;
+    
+}
+.asd{
+    background-color: rgb(240, 228, 161);
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    
+}

@@ -47,6 +47,9 @@ import { ProfileComponent } from './interface/profile/profile.component';
 
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { EditProfilesComponent } from './interface/edit-profiles/edit-profiles.component';
+import { ProductComponent } from './product/product.component';
+import { ProductsComponent } from './products/products.component';
+import { ReplyComponent } from './reply/reply.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +79,10 @@ import { EditProfilesComponent } from './interface/edit-profiles/edit-profiles.c
     NprofileComponent,
     NannyTableComponent,
     ProfileComponent,
-    EditProfilesComponent
+    EditProfilesComponent,
+    ProductComponent,
+    ProductsComponent,
+    ReplyComponent
   ],
   imports: [
     BrowserModule,
