@@ -49,6 +49,10 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { EditProfilesComponent } from './interface/edit-profiles/edit-profiles.component';
 import { RatingComponent } from './rating/rating.component';
 import { ShowRatingsComponent } from './rating/show-ratings/show-ratings.component';
+import { AdminModule } from './admin/admin.module';
+import { PostsModule } from './posts/posts.module';
+import { SharedModule } from './shared/shared.module';
+import { AdminloginComponent } from './auth/adminlogin/adminlogin.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +84,8 @@ import { ShowRatingsComponent } from './rating/show-ratings/show-ratings.compone
     ProfileComponent,
     EditProfilesComponent,
     RatingComponent,
-    ShowRatingsComponent
+    ShowRatingsComponent,
+    AdminloginComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +104,10 @@ import { ShowRatingsComponent } from './rating/show-ratings/show-ratings.compone
     ReactiveFormsModule,
     RouterModule,
     MatButtonModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AdminModule,
+    PostsModule,
+    SharedModule
   ],
 
   providers: [PauthService],

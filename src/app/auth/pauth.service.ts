@@ -16,6 +16,10 @@ import {Customer} from "./customer.model";
 })
 export class PauthService {
 
+  //malsha created
+  authState: any = null
+  //done
+
   user: Observable<Nanny>;
   customer: Observable<Nanny>;
   currentUserID: string;
@@ -32,7 +36,12 @@ export class PauthService {
     private afAuth: AngularFireAuth,
     private db: AngularFirestore
   ) {
-    this.user = this.afAuth.authState.pipe(
+
+      // malsha
+      this.afAuth.authState.subscribe(data => this.authState = data)
+      // done
+
+      this.user = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
 
@@ -52,6 +61,17 @@ export class PauthService {
       })
     );
     }
+
+    // malsha crete
+    //get authenticated(): boolean {
+    // return this.authState !== null
+    //}
+  
+   // get currentUserID(): string {
+    //  return this.authenticated ? this.authState.uid : null
+   // } 
+
+   //done
 
   initAuthListener() {
     this.afAuth.authState.subscribe(user => {
@@ -242,5 +262,18 @@ export class PauthService {
 
   }
 
+//Admin login 
+adminlogin(authData: Nanny) {
+  this.afAuth.auth
+    .signInWithEmailAndPassword(authData.email, authData.password)
+    .then(result => {
+      console.log(result);
+      this.authSuccessfully();
+      this.router.navigate(['/sidnav']);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
 
 }

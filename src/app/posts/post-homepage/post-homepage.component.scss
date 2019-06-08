@@ -1,0 +1,58 @@
+a {
+    text-decoration: none;
+    font-size:20px;
+  }
+  
+  a:hover,
+  a:active {
+    color: gray;
+  }
+  
+  .navigation-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 20px;
+    
+  }
+
+  .toolbar {
+       height:50px;
+  }
+
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create two unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+  
+}
+
+.left {
+  width: 75%;
+}
+
+.right {
+  padding-top:20px;
+  padding-left: 50px;
+  width: 25%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+
+
+
+  
+  
