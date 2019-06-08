@@ -56,6 +56,7 @@ export class NannyTableComponent implements OnInit, OnDestroy, AfterViewInit {
   goProfile(nanny) {
     console.log(nanny.Id);
     console.log("current id "+ this.authS.currentUserID);
+    this.authS.selectedUserName = nanny.name;
     this.authS.selectedUserDoc = this.db.collection('nanny').doc(nanny.Id);
     this.router.navigate(['/ntable/nprofile', nanny.name]);
     this.trainingService.toProfile(nanny);

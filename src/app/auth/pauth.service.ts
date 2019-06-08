@@ -19,6 +19,8 @@ export class PauthService {
   user: Observable<Nanny>;
   customer: Observable<Nanny>;
   currentUserID: string;
+  currentUserName: string;
+  selectedUserName: string;
   selectedUserDoc: AngularFirestoreDocument<any>;
   currentUserDoc: AngularFirestoreDocument<any>;
 
@@ -82,6 +84,7 @@ export class PauthService {
           town: authData.town
         });
         this.currentUserID = result.user.uid;
+        this.currentUserName = authData.name;
         this.currentUserDoc = this.db.collection('nanny').doc(result.user.uid);
         console.log(result);
         this.authSuccessfully();
@@ -103,6 +106,7 @@ export class PauthService {
           email: authData.email
         });
         this.currentUserID = result.user.uid;
+        this.currentUserName = authData.name;
         this.currentUserDoc = this.db.collection('customers').doc(result.user.uid);
         console.log(result);
         this.authSuccessfully();
@@ -124,6 +128,7 @@ export class PauthService {
       .catch(error => {
         console.log(error);
       });
+    this.currentUserName = authData.name;
   }
 // customer login
   clogin(authData: Nanny) {
@@ -138,9 +143,11 @@ export class PauthService {
       .catch(error => {
         console.log(error);
       });
+    this.currentUserName = authData.name;
   }
 
   logout() {
+    this.currentUserName = '';
     this.currentUserID = '';
     this.isAuthenticated = false;
     this.authChange.next(false);

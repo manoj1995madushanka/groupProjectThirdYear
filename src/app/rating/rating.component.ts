@@ -26,8 +26,16 @@ export class RatingComponent implements OnInit {
     return this.authS.currentUserDoc.ref.id;
   }
 
+  get currentUserName() {
+    return this.authS.currentUserName;
+  }
+
   get selectedUserId() {
     return this.authS.selectedUserDoc.ref.id;
+  }
+
+  get selectedUserName() {
+    return this.authS.selectedUserName;
   }
 
 }

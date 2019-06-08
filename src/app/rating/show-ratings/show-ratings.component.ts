@@ -12,6 +12,8 @@ export class ShowRatingsComponent implements OnInit {
 
   @Input() currentUserId;
   @Input() selectedUserId;
+  @Input() currentUserName;
+  @Input() selectedUserName;
 
   ratings: Observable<any>; // stars
   avgRating: Observable<any>;
@@ -29,7 +31,7 @@ export class ShowRatingsComponent implements OnInit {
 
   // startHandler
   reviewHandler(value) {
-    this.rateingS.setReview(this.currentUserId, this.selectedUserId, value);
+    this.rateingS.setReview(this.currentUserId, this.selectedUserId, this.currentUserName, this.selectedUserName, value);
   }
 
 }

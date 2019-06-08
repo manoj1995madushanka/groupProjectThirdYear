@@ -24,9 +24,9 @@ export class RatingService {
   }
 
   // Create or update review
-  setReview(currentUserId, selectedUserId, value) {
+  setReview(currentUserId, selectedUserId, currentUserName, selectedUserName, value) {
     // Star document data
-    const rate: Rating = { currentUserId, selectedUserId, value };
+    const rate: Rating = { currentUserId, selectedUserId, currentUserName, selectedUserName, value };
 
     // Custom doc ID for relationship
     const ratePath = `rating/${rate.currentUserId}_${rate.selectedUserId}`;
