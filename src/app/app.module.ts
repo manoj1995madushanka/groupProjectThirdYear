@@ -47,6 +47,10 @@ import { ProfileComponent } from './interface/profile/profile.component';
 
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { EditProfilesComponent } from './interface/edit-profiles/edit-profiles.component';
+import { AdminModule } from './admin/admin.module';
+import { PostsModule } from './posts/posts.module';
+import { SharedModule } from './shared/shared.module';
+import { AdminloginComponent } from './auth/adminlogin/adminlogin.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +80,8 @@ import { EditProfilesComponent } from './interface/edit-profiles/edit-profiles.c
     NprofileComponent,
     NannyTableComponent,
     ProfileComponent,
-    EditProfilesComponent
+    EditProfilesComponent,
+    AdminloginComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +100,10 @@ import { EditProfilesComponent } from './interface/edit-profiles/edit-profiles.c
     ReactiveFormsModule,
     RouterModule,
     MatButtonModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AdminModule,
+    PostsModule,
+    SharedModule
   ],
 
   providers: [PauthService],
