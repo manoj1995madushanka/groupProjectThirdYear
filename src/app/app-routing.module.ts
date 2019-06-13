@@ -18,11 +18,26 @@ import {CsignupComponent} from "./auth/customer/csignup/csignup.component";
 import {CloginComponent} from "./auth/customer/clogin/clogin.component";
 import {LoginAsComponent} from "./interface/select-user-type/login-as/login-as.component";
 import {SignupAsComponent} from "./interface/select-user-type/signup-as/signup-as.component";
-import {BlogComponent} from "./blog/blog.component";
+// import {BlogComponent} from "./blog/blog.component";
 import {NprofileComponent} from "./interface/nprofile/nprofile.component";
 import {NannyTableComponent} from "./interface/nanny-table/nanny-table.component";
 import {ProfileComponent} from "./interface/profile/profile.component";
 import {EditProfilesComponent} from "./interface/edit-profiles/edit-profiles.component";
+import {ShowRatingsComponent} from "./rating/show-ratings/show-ratings.component";
+import {RatingComponent} from "./rating/rating.component";
+
+// admin
+
+import {AdminDashboardComponent} from "./admin/admin-dashboard/admin-dashboard.component";
+import {CaretakersComponent} from "./admin/caretakers/caretakers.component";
+import {MaterialDashboardComponent} from "./admin/material-dashboard/material-dashboard.component";
+
+
+
+//blog
+import { PostHomepageComponent} from "./posts/post-homepage/post-homepage.component";
+import {NavbarComponent} from "./shared/navbar/navbar.component";
+import { AdminloginComponent } from './auth/adminlogin/adminlogin.component';
 
 const routes: Routes = [
   {path: '', component: InterfaceComponent},
@@ -39,11 +54,22 @@ const routes: Routes = [
   {path: 'clogin', component: CloginComponent},
   {path: 'loginas', component: LoginAsComponent},
   {path: 'signupas', component: SignupAsComponent},
-  {path: 'blog', component: BlogComponent},
+  // {path: 'blog', component: BlogComponent},
   {path: 'ntable', component: NannyTableComponent},
   {path: 'ntable/nprofile/:id', component: NprofileComponent},
   {path: 'profile/:id', component: ProfileComponent},
-  {path: 'edit-profile', component: EditProfilesComponent}
+  {path: 'edit-profile', component: EditProfilesComponent},
+
+  {path: 'rating', component: RatingComponent},
+  // routes for admin
+  {path: 'adminlogin', component: AdminloginComponent},
+  {path: 'admindash', component: AdminDashboardComponent},
+  { path: 'caretakers', component: CaretakersComponent},
+  { path: 'dash', component: MaterialDashboardComponent},
+  // routes for blog
+  {path: 'homeblog', component: PostHomepageComponent},
+  {path: 'showblog', component: NavbarComponent},
+
 
 ];
 
