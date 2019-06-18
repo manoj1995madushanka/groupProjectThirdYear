@@ -38,11 +38,13 @@ import {MaterialDashboardComponent} from "./admin/material-dashboard/material-da
 import { PostHomepageComponent} from "./posts/post-homepage/post-homepage.component";
 import {NavbarComponent} from "./shared/navbar/navbar.component";
 import { AdminloginComponent } from './auth/adminlogin/adminlogin.component';
+import {PostListComponent} from "./posts/post-list/post-list.component";
+import {PostDetailComponent} from "./posts/post-detail/post-detail.component";
+import {PostDashboardComponent} from "./posts/post-dashboard/post-dashboard.component";
 
 const routes: Routes = [
   {path: '', component: InterfaceComponent},
   {path: 'bot', component: BotComponent},
-  {path: 'forum', component: ForumComponent},
   {path: 'give-service', component: GiveServiceComponent},
   {path: 'contact-us', component: ContactUsComponent},
   {path: 'privacy-policy', component: PrivacyPolicyComponent},
@@ -68,7 +70,11 @@ const routes: Routes = [
   { path: 'dash', component: MaterialDashboardComponent},
   // routes for blog
   {path: 'homeblog', component: PostHomepageComponent},
+  {path: 'postlist', component: PostListComponent},
+  {path: 'postdetail', component: PostDetailComponent},
+  {path: 'postdashboard', component: PostDashboardComponent},
   {path: 'showblog', component: NavbarComponent},
+  {path: 'forum', component: ForumComponent}
 
 
 ];

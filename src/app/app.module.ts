@@ -53,6 +53,8 @@ import { AdminModule } from './admin/admin.module';
 import { PostsModule } from './posts/posts.module';
 import { SharedModule } from './shared/shared.module';
 import { AdminloginComponent } from './auth/adminlogin/adminlogin.component';
+import { ProblemComponent } from './forum/problem/problem.component';
+import { ReplyComponent } from './forum/reply/reply.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +87,9 @@ import { AdminloginComponent } from './auth/adminlogin/adminlogin.component';
     EditProfilesComponent,
     RatingComponent,
     ShowRatingsComponent,
-    AdminloginComponent
+    AdminloginComponent,
+    ProblemComponent,
+    ReplyComponent
   ],
   imports: [
     BrowserModule,
