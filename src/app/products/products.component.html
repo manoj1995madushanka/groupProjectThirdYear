@@ -1,0 +1,19 @@
+<mat-card class="questions">
+    <mat-card-header>
+        <input type="text" size="100" [(ngModel)]="productName">
+        <button mat-raised-button color="primary" (click)="onAddProduct()">Ask Question</button>
+    </mat-card-header>
+
+</mat-card>
+<!-- <hr> -->
+<br>
+<div *ngFor="let product of products ">
+    <app-product [productName]="product"> </app-product>
+   <br>
+</div>
+
+
+
+
+
+<!-- <div *ngFor ="let product of products">{{product}}</div> -->

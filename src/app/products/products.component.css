@@ -1,0 +1,16 @@
+.questions{
+/* width: 400px; */
+ background-color: rgb(255, 221, 127); 
+ display: flex;
+ justify-content: center;
+ flex-direction: row;
+ align-items: center;
+ 
+}
+
+/* .ques{
+
+    font-size: 54px;
+    font-style: bold;
+
+} */
