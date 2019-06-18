@@ -16,9 +16,17 @@ import {Customer} from "./customer.model";
 })
 export class PauthService {
 
+  //malsha created
+  authState: any = null
+  //done
+
   user: Observable<Nanny>;
   customer: Observable<Nanny>;
   currentUserID: string;
+  currentUserName: string;
+  selectedUserName: string;
+  selectedUserDoc: AngularFirestoreDocument<any>;
+  currentUserDoc: AngularFirestoreDocument<any>;
 
   authChange = new Subject<boolean>();
   private isAuthenticated = false;
@@ -28,10 +36,15 @@ export class PauthService {
     private afAuth: AngularFireAuth,
     private db: AngularFirestore
   ) {
-    this.user = this.afAuth.authState.pipe(
+
+      // malsha
+      this.afAuth.authState.subscribe(data => this.authState = data)
+      // done
+
+      this.user = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
-          this.currentUserID = user.uid;
+
           return this.db.doc<Nanny>(`nanny/${user.uid}`).valueChanges()  ;
         } else {
           return of(null);
@@ -48,6 +61,17 @@ export class PauthService {
       })
     );
     }
+
+    // malsha crete
+    //get authenticated(): boolean {
+    // return this.authState !== null
+    //}
+  
+   // get currentUserID(): string {
+    //  return this.authenticated ? this.authState.uid : null
+   // } 
+
+   //done
 
   initAuthListener() {
     this.afAuth.authState.subscribe(user => {
@@ -69,6 +93,7 @@ export class PauthService {
       .createUserWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
         this.db.collection('nanny').doc(result.user.uid).set({
+          Id: result.user.uid,
           name: authData.name,
           address: authData.address,
           number: authData.number,
@@ -78,6 +103,9 @@ export class PauthService {
           jobType: authData.jobType,
           town: authData.town
         });
+        this.currentUserID = result.user.uid;
+        this.currentUserName = authData.name;
+        this.currentUserDoc = this.db.collection('nanny').doc(result.user.uid);
         console.log(result);
         this.authSuccessfully();
       })
@@ -91,11 +119,15 @@ export class PauthService {
       .createUserWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
         this.db.collection('customers').doc(result.user.uid).set({
+          Id: result.user.uid,
           name: authData.name,
           address: authData.address,
           number: authData.number,
           email: authData.email
         });
+        this.currentUserID = result.user.uid;
+        this.currentUserName = authData.name;
+        this.currentUserDoc = this.db.collection('customers').doc(result.user.uid);
         console.log(result);
         this.authSuccessfully();
       })
@@ -109,11 +141,14 @@ export class PauthService {
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
         console.log(result);
+        this.currentUserID = result.user.uid;
+        this.currentUserDoc = this.db.collection('nanny').doc(result.user.uid);
         this.authSuccessfully();
       })
       .catch(error => {
         console.log(error);
       });
+    this.currentUserName = authData.name;
   }
 // customer login
   clogin(authData: Nanny) {
@@ -121,14 +156,19 @@ export class PauthService {
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
         console.log(result);
+        this.currentUserID = result.user.uid;
+        this.currentUserDoc = this.db.collection('customers').doc(result.user.uid);
         this.authSuccessfully();
       })
       .catch(error => {
         console.log(error);
       });
+    this.currentUserName = authData.name;
   }
 
   logout() {
+    this.currentUserName = '';
+    this.currentUserID = '';
     this.isAuthenticated = false;
     this.authChange.next(false);
     this.router.navigate(['/login']);
@@ -222,5 +262,18 @@ export class PauthService {
 
   }
 
+//Admin login 
+adminlogin(authData: Nanny) {
+  this.afAuth.auth
+    .signInWithEmailAndPassword(authData.email, authData.password)
+    .then(result => {
+      console.log(result);
+      this.authSuccessfully();
+      this.router.navigate(['/sidnav']);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
 
 }

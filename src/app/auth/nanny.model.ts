@@ -1,7 +1,7 @@
 export interface Nanny {
   email?: string;
   password?: string;
-  nannyId?: string;
+  Id?: string;
   name?: string;
   address?: string;
   number?: string;

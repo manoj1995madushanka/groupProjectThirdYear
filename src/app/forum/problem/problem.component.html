@@ -1,0 +1,24 @@
+<mat-card class="asd">
+  <article class="product">
+    <mat-card-title>
+      <div>{{ productName }}</div>
+    </mat-card-title>
+
+    <!-- <div>{{jstoday}}</div> -->
+    <!-- <p>An Awsome Question !</p> -->
+    <div style="text-align:right;">
+      <p>Posted On</p>{{jstoday}}
+    </div>
+    <input type="text" [(ngModel)]="answer">
+    <button mat-raised-button color="warn" (click)="onAddReply()" >Reply</button>
+    <br>
+    <div *ngFor ="let ans of reply ">
+      <br>
+      <app-reply  [answer]="ans"></app-reply>
+      <!-- <hr> -->
+      <br>
+    </div>
+
+  </article>
+</mat-card>
+<!-- <hr> -->

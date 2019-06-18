@@ -47,9 +47,14 @@ import { ProfileComponent } from './interface/profile/profile.component';
 
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { EditProfilesComponent } from './interface/edit-profiles/edit-profiles.component';
-import { ProductComponent } from './product/product.component';
-import { ProductsComponent } from './products/products.component';
-import { ReplyComponent } from './reply/reply.component';
+import { RatingComponent } from './rating/rating.component';
+import { ShowRatingsComponent } from './rating/show-ratings/show-ratings.component';
+import { AdminModule } from './admin/admin.module';
+import { PostsModule } from './posts/posts.module';
+import { SharedModule } from './shared/shared.module';
+import { AdminloginComponent } from './auth/adminlogin/adminlogin.component';
+import { ProblemComponent } from './forum/problem/problem.component';
+import { ReplyComponent } from './forum/reply/reply.component';
 
 @NgModule({
   declarations: [
@@ -80,8 +85,10 @@ import { ReplyComponent } from './reply/reply.component';
     NannyTableComponent,
     ProfileComponent,
     EditProfilesComponent,
-    ProductComponent,
-    ProductsComponent,
+    RatingComponent,
+    ShowRatingsComponent,
+    AdminloginComponent,
+    ProblemComponent,
     ReplyComponent
   ],
   imports: [
@@ -101,7 +108,10 @@ import { ReplyComponent } from './reply/reply.component';
     ReactiveFormsModule,
     RouterModule,
     MatButtonModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AdminModule,
+    PostsModule,
+    SharedModule
   ],
 
   providers: [PauthService],
