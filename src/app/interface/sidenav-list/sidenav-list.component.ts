@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import {PauthService} from "../../auth/pauth.service";
+import {GetNannyDetailsService} from "../get-nanny-details.service";
 
 @Component({
   selector: 'app-sidenav-list',
@@ -9,7 +10,7 @@ import {PauthService} from "../../auth/pauth.service";
 export class SidenavListComponent implements OnInit {
   @Output() closeSidenav = new EventEmitter<void>();
 
-  constructor(private authService: PauthService) { }
+  constructor(private authService: PauthService,  private profileSetup: GetNannyDetailsService) { }
 
   ngOnInit() {
   }
@@ -21,6 +22,10 @@ export class SidenavListComponent implements OnInit {
   onLogout(){
     this.authService.logout();
     this.onClose();
+  }
+
+  goProfile() {
+    this.profileSetup.gotoProfile();
   }
 
 }
