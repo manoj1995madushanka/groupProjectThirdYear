@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {MatBottomSheet, MatBottomSheetRef} from "@angular/material";
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -11,26 +12,38 @@ export class AppComponent {
 
   openSidenav = 'false';
 
-  constructor(private bottomSheet: MatBottomSheet) {}
+  constructor(private bottomSheet: MatBottomSheet, public dialog: MatDialog) {}
 
-  openBottomSheet(): void {
-    // this.bottomSheet.open(BottomSheetOverviewExampleSheet);
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      // data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+     // this.animal = result;
+    });
   }
 
-  onToggle(){
+
+
+  onToggle() {
 
   }
 }
 
 @Component({
-  selector: 'bottom-sheet-overview-example-sheet',
-  templateUrl: 'bottom-sheet-overview-example-sheet.html',
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'dialog-overview-example-dialog.html',
 })
-export class BottomSheetOverviewExampleSheet {
-  constructor(private bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewExampleSheet>) {}
+export class DialogOverviewExampleDialog {
 
-  openLink(event: MouseEvent): void {
-    this.bottomSheetRef.dismiss();
-    event.preventDefault();
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
+
 }

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
+import {AppComponent, DialogOverviewExampleDialog} from './app.component';
 import { BotComponent } from './bot/bot.component';
 import { InterfaceComponent } from './interface/interface.component';
 import { HeaderComponent } from './interface/header/header.component';
@@ -89,7 +89,8 @@ import { ReplyComponent } from './forum/reply/reply.component';
     ShowRatingsComponent,
     AdminloginComponent,
     ProblemComponent,
-    ReplyComponent
+    ReplyComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -115,6 +116,7 @@ import { ReplyComponent } from './forum/reply/reply.component';
   ],
 
   providers: [PauthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogOverviewExampleDialog]
 })
 export class AppModule { }
