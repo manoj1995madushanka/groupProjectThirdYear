@@ -21,7 +21,7 @@ export class GetNannyDetailsService {
   sgender: string;
   stown: string;
   sjobType: string;
-  sbirthdate: Date;
+  sbirthdate: string;
   simgurl: string;
   filterTest: string;
   selectedid: string;

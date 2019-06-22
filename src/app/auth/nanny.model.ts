@@ -6,14 +6,16 @@ export interface Nanny {
   name?: string;
   address?: string;
   number?: string;
+  nic ?: number;
   gender ?: string;
   town?: string;
   jobType ?: string;
-  birthdate?: Date;
+  birthdate?: string;
   hourlyRate?: string;
   availability?: string;
   bio?: string;
   imgurl?: string;
+  age?: number;
 }
 
 export interface Fob {

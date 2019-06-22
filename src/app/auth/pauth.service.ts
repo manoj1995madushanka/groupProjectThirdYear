@@ -5,10 +5,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 
 import { Nanny} from './nanny.model';
-import {Observable, of} from "rxjs";
-import {switchMap} from "rxjs/operators";
-import {User} from "firebase";
-import {Customer} from "./customer.model";
+import {Observable, of} from 'rxjs';
+import {switchMap} from 'rxjs/operators';
+import {User} from 'firebase';
+import {Customer} from './customer.model';
 
 
 @Injectable({
@@ -16,9 +16,9 @@ import {Customer} from "./customer.model";
 })
 export class PauthService {
 
-  //malsha created
-  authState: any = null
-  //done
+  // malsha created
+  authState: any = null;
+  // done
 
   user: Observable<Nanny>;
   customer: Observable<Nanny>;
@@ -38,7 +38,7 @@ export class PauthService {
   ) {
 
       // malsha
-      this.afAuth.authState.subscribe(data => this.authState = data)
+      this.afAuth.authState.subscribe(data => this.authState = data);
       // done
 
       this.user = this.afAuth.authState.pipe(
@@ -51,7 +51,7 @@ export class PauthService {
         }
       })
     );
-    this.customer = this.afAuth.authState.pipe(
+      this.customer = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
           return this.db.doc<Nanny>(`customers/${user.uid}`).valueChanges()  ;
@@ -63,15 +63,15 @@ export class PauthService {
     }
 
     // malsha crete
-    //get authenticated(): boolean {
+    // get authenticated(): boolean {
     // return this.authState !== null
-    //}
-  
+    // }
+
    // get currentUserID(): string {
     //  return this.authenticated ? this.authState.uid : null
-   // } 
+   // }
 
-   //done
+   // done
 
   initAuthListener() {
     this.afAuth.authState.subscribe(user => {
@@ -98,6 +98,7 @@ export class PauthService {
           address: authData.address,
           number: authData.number,
           birthdate: authData.birthdate,
+          age: authData.age,
           email: authData.email,
           gender: authData.gender,
           jobType: authData.jobType,
@@ -108,6 +109,7 @@ export class PauthService {
         this.currentUserDoc = this.db.collection('nanny').doc(result.user.uid);
         console.log(result);
         this.authSuccessfully();
+        // console.log(birthdate);
       })
       .catch(error => {
         console.log(error);
@@ -255,14 +257,14 @@ export class PauthService {
       number: user.number,
       town: user.town,
       address: user.address,
-      bio: user.bio
-    }
+      availability: user.availability
+    };
 
     return userRef.set(data, { merge: true });
 
   }
 
-//Admin login 
+// Admin login
 adminlogin(authData: Nanny) {
   this.afAuth.auth
     .signInWithEmailAndPassword(authData.email, authData.password)

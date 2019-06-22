@@ -1,24 +1,24 @@
 <!--for nanny-->
-<div *ngIf="auth.user | async; then nAuthenticated else guest">
+<div *ngIf="auth.user | async; then nAuthenticated ">
   <!-- template will replace this div -->
 </div>
 <!--for customer-->
-<div *ngIf="auth.customer | async; then cAuthenticated">
+<div *ngIf="auth.customer | async; then cAuthenticated " >
    <!--<div *ngIf="auth.customer | async; then cAuthenticated else guest">-->
   <!-- template will replace this div -->
 </div>
 
 
 <!-- User NOT logged in -->
-<ng-template #guest>
+<!--<ng-template #guest>
   <h3>Howdy, GUEST</h3>
   <p>Login to get started...</p>
 
-  <!--<button (click)="auth.googleLogin()">
+  &lt;!&ndash;<button (click)="auth.googleLogin()">
     <i class="fa fa-google"></i> Connect Google
-  </button>-->
+  </button>&ndash;&gt;
 
-</ng-template>
+</ng-template>-->
 
 
 <!-- User logged in -->
@@ -265,7 +265,8 @@
           </div>
           <div class="col-md-2">
             <!--<input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>-->
-            <button mat-raised-button color="primary" >Connect</button>
+            <!--<button mat-raised-button color="primary" >Connect</button>-->
+            <a routerLink="/edit-profile"> <button mat-raised-button color="primary" >Edit Profile</button></a>
           </div>
 
         </div>

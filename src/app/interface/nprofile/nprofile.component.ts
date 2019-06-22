@@ -14,7 +14,7 @@ export class NprofileComponent implements OnInit {
   gender: string;
   town: string;
   jobType: string;
-  birthdate: Date;
+  birthdate: string;
   imgurl: string;
   email: string;
 

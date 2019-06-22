@@ -63,7 +63,8 @@
                 <input type="radio" name="gender" ngModel [value]="gender" required>{{ gender }}
               </label>
             </div>-->
-            <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+            <button class="btn btn-primary" type="submit" [disabled]="!f.valid" (click)="onSubmit()">Submit</button>
+            <button mat-raised-button color="accent" (click)="goProfile()">Cancel</button>
           </form>
         </div>
       </div>
@@ -73,10 +74,8 @@
   </div>
 </ng-template>
 
-
 <ng-template #cAuthenticated>
-  <div *ngIf="auth.user | async as user">
-
+  <div *ngIf="auth.customer | async as user">
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
@@ -98,8 +97,8 @@
               <label for="rate">Your Hourly Payment Value Rs.</label>
               <input type="text" id="rate" class="form-control" ngModel name="rate" required rate #rate="ngModel">
             </div>-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;
-            &lt;!&ndash;<p *ngIf="!userData.valid && userData.touched">User Data is invalid!</p>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>-->
+            <!--<p *ngIf="!userData.valid && userData.touched">User Data is invalid!</p>&ndash;&gt;-->
             <!--<div class="form-group">
               <label for="job">Your working category</label>
               <select id="job" class="form-control" ngModel name="job" required job #job="ngModel">
@@ -132,7 +131,78 @@
                 <input type="radio" name="gender" ngModel [value]="gender" required>{{ gender }}
               </label>
             </div>-->
-            <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+            <button class="btn btn-primary" type="submit"  (click)="oncSubmit()">Submit</button>
+            <button mat-raised-button color="accent" (click)="goProfile()">Cancel</button>
+          </form>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </div>
+
+</ng-template>
+
+
+<!--<ng-template #cAuthenticated>
+  <div *ngIf="auth.user | async as user">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+          <form (ngSubmit)="oncSubmit()" #cf="ngForm">
+            &lt;!&ndash;<div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">&ndash;&gt;
+            <div class="form-group">
+              <label for="cusername">Full Name</label>
+              <input type="text" id="cusername" class="form-control" ngModel name="cusername" required placeholder={{user.name}}>
+            </div>
+            <div class="form-group">
+              <label for="caddress">Your Address</label>
+              <input type="text" id="caddress" class="form-control" ngModel name="caddress" required caddress #caddress="ngModel" placeholder={{user.address}}>
+            </div>
+            <div class="form-group">
+              <label for="cnumber">Your Mobile Number</label>
+              <input type="text" id="cnumber" class="form-control" ngModel name="cnumber" required cnumber #cnumber="ngModel" placeholder={{user.number}}>
+            </div>
+            &lt;!&ndash;<div class="form-group">
+              <label for="rate">Your Hourly Payment Value Rs.</label>
+              <input type="text" id="rate" class="form-control" ngModel name="rate" required rate #rate="ngModel">
+            </div>&ndash;&gt;
+            &lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;
+            &lt;!&ndash;<p *ngIf="!userData.valid && userData.touched">User Data is invalid!</p>&ndash;&gt;&ndash;&gt;
+            &lt;!&ndash;<div class="form-group">
+              <label for="job">Your working category</label>
+              <select id="job" class="form-control" ngModel name="job" required job #job="ngModel">
+                <option value="Kids">Kids</option>
+                <option value="Parents">Parents</option>
+                <option value="Home">Home</option>
+                <option value="Pets">Pets</option>
+              </select>
+            </div>&ndash;&gt;
+            <div class="form-group">
+              <label for="cworkingMode">What for you looking for nanny?</label>
+              <select id="cworkingMode" class="form-control" ngModel name="cworkingMode" required cworkingMode #cworkingMode="ngModel">
+                <option value="Personal need">For personal need</option>
+                <option value="For hire nannies">For hire nannies</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cworkingTown">Your Town</label>
+              <select id="cworkingTown" class="form-control" ngModel name="cworkingTown" required cworkingTown #cworkingTown="ngModel">
+                <option value="Galle">Galle</option>
+                <option value="Colombo">Colombo</option>
+              </select>
+            </div>
+            &lt;!&ndash;<div class="form-group">
+              <textarea id="bio" rows="3" class="form-control" ngModel name="bio" required bio #bio="ngModel"></textarea>
+            </div>&ndash;&gt;
+            &lt;!&ndash;<p>Your reply: {{ answer }}</p>
+            <div class="radio" *ngFor="let gender of genders">
+              <label>
+                <input type="radio" name="gender" ngModel [value]="gender" required>{{ gender }}
+              </label>
+            </div>&ndash;&gt;
+            <button class="btn btn-primary" type="submit" [disabled]="!f.valid" (click)="oncSubmit()">Submit</button>
+            <button mat-raised-button color="accent" (click)="goProfile()">Cancel</button>
           </form>
         </div>
       </div>
@@ -140,7 +210,7 @@
     </div>
 
   </div>
-</ng-template>
+</ng-template>-->
 
 
 

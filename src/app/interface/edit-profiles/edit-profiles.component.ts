@@ -41,9 +41,9 @@ export class EditProfilesComponent implements OnInit {
     this.customer.number = this.csignupForm.value.cnumber;
     this.customer.availability = this.csignupForm.value.cworkingMode;
     this.customer.town = this.csignupForm.value.cworkingTown;
-    this.auth.updateNannyData(this.customer);
+    this.auth.updateCustomerData(this.customer);
 
-    this.signupForm.reset();
+    /*this.signupForm.reset();*/
     this.goProfile();
   }
   onSubmit() {
