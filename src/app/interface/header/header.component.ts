@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @Output() sidenavToggle = new EventEmitter<void>();
   isAuth = false;
   authSubscription: Subscription;
+  state = localStorage.getItem('checkLogin');
 
   constructor(private authService: PauthService, private profileSetup: GetNannyDetailsService) { }
 
@@ -20,6 +21,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authSubscription = this.authService.authChange.subscribe(authStatus => {
       this.isAuth = authStatus;
     });
+    console.log(this.state);
   }
 
   onToggleSidenav() {

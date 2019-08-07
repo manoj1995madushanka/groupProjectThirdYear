@@ -1,8 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
+// for local storage
+import { LOCAL_STORAGE} from 'ngx-webstorage-service';
+import { StorageService} from 'ngx-webstorage-service';
 
 import { Nanny} from './nanny.model';
 import {Observable, of} from 'rxjs';
@@ -28,13 +31,17 @@ export class PauthService {
   selectedUserDoc: AngularFirestoreDocument<any>;
   currentUserDoc: AngularFirestoreDocument<any>;
 
+  STORAGE_KEY: string;
+
   authChange = new Subject<boolean>();
   private isAuthenticated = false;
+
 
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    @Inject(LOCAL_STORAGE) private storage: StorageService
   ) {
 
       // malsha
@@ -60,6 +67,8 @@ export class PauthService {
         }
       })
     );
+      // this.storage.set(this.STORAGE_KEY, 'false');
+      // this.storage.set('checkLogin', 'false');
     }
 
     // malsha crete
@@ -109,7 +118,9 @@ export class PauthService {
         this.currentUserDoc = this.db.collection('nanny').doc(result.user.uid);
         console.log(result);
         this.authSuccessfully();
+        // this.storage.set(this.STORAGE_KEY, 'true');
         // console.log(birthdate);
+        this.storage.set('checkLogin', 'true');
       })
       .catch(error => {
         console.log(error);
@@ -132,6 +143,7 @@ export class PauthService {
         this.currentUserDoc = this.db.collection('customers').doc(result.user.uid);
         console.log(result);
         this.authSuccessfully();
+        this.storage.set('checkLogin', 'true');
       })
       .catch(error => {
         console.log(error);
@@ -146,11 +158,13 @@ export class PauthService {
         this.currentUserID = result.user.uid;
         this.currentUserDoc = this.db.collection('nanny').doc(result.user.uid);
         this.authSuccessfully();
+        this.storage.set('checkLogin', 'true');
       })
       .catch(error => {
         console.log(error);
       });
     this.currentUserName = authData.name;
+
   }
 // customer login
   clogin(authData: Nanny) {
@@ -161,6 +175,7 @@ export class PauthService {
         this.currentUserID = result.user.uid;
         this.currentUserDoc = this.db.collection('customers').doc(result.user.uid);
         this.authSuccessfully();
+        this.storage.set('checkLogin', 'true');
       })
       .catch(error => {
         console.log(error);
@@ -174,6 +189,7 @@ export class PauthService {
     this.isAuthenticated = false;
     this.authChange.next(false);
     this.router.navigate(['/login']);
+    localStorage.removeItem('checkLogin');
   }
 
   isAuth() {

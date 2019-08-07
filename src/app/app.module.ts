@@ -56,6 +56,11 @@ import { AdminloginComponent } from './auth/adminlogin/adminlogin.component';
 import { ProblemComponent } from './forum/problem/problem.component';
 import { ReplyComponent } from './forum/reply/reply.component';
 
+import { StorageServiceModule} from 'ngx-webstorage-service';
+import { WelcomeComponent } from './interface/welcome/welcome.component';
+
+import { NgImageSliderModule } from 'ng-image-slider';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,7 +95,8 @@ import { ReplyComponent } from './forum/reply/reply.component';
     AdminloginComponent,
     ProblemComponent,
     ReplyComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -112,7 +118,9 @@ import { ReplyComponent } from './forum/reply/reply.component';
     AngularFireStorageModule,
     AdminModule,
     PostsModule,
-    SharedModule
+    SharedModule,
+    StorageServiceModule,
+    NgImageSliderModule
   ],
 
   providers: [PauthService],
