@@ -36,6 +36,8 @@ export class PauthService {
   authChange = new Subject<boolean>();
   private isAuthenticated = false;
 
+  errorMessage = false;
+
 
   constructor(
     private router: Router,
@@ -161,6 +163,7 @@ export class PauthService {
         this.storage.set('checkLogin', 'true');
       })
       .catch(error => {
+        this.errorMessage = true;
         console.log(error);
       });
     this.currentUserName = authData.name;

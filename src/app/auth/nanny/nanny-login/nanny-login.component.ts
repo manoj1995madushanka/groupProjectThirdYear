@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {PauthService} from '../../pauth.service';
+
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {LoginErrorComponent} from '../../login-error/login-error.component';
+
 
 @Component({
   selector: 'app-nanny-login',
@@ -10,7 +14,7 @@ import {PauthService} from '../../pauth.service';
 export class NannyLoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private authService: PauthService) { }
+  constructor(private authService: PauthService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -24,7 +28,22 @@ export class NannyLoginComponent implements OnInit {
   onSubmit() {
     this.authService.nlogin({
       email: this.loginForm.value.email,
-      password: this.loginForm.value.password
+      password: this.loginForm.value.password,
     });
+    this.doCheck();
+
+  }
+
+  doCheck() {
+    if (this.authService.errorMessage === true) {
+      this.loginForm.value.password = '';
+      const dialogRef = this.dialog.open(LoginErrorComponent, {
+        width: '250px',
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
+    }
   }
 }

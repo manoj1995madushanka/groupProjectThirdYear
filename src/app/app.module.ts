@@ -60,6 +60,7 @@ import { StorageServiceModule} from 'ngx-webstorage-service';
 import { WelcomeComponent } from './interface/welcome/welcome.component';
 
 import { NgImageSliderModule } from 'ng-image-slider';
+import { LoginErrorComponent } from './auth/login-error/login-error.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import { NgImageSliderModule } from 'ng-image-slider';
     ProblemComponent,
     ReplyComponent,
     DialogOverviewExampleDialog,
-    WelcomeComponent
+    WelcomeComponent,
+    LoginErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -125,6 +127,6 @@ import { NgImageSliderModule } from 'ng-image-slider';
 
   providers: [PauthService],
   bootstrap: [AppComponent],
-  entryComponents: [DialogOverviewExampleDialog]
+  entryComponents: [DialogOverviewExampleDialog, LoginErrorComponent]
 })
 export class AppModule { }
